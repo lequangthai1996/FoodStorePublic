@@ -1,0 +1,96 @@
+<div id="quick-view-product" [style.display]="param" *ngIf="product != null">
+  <div class="quickview-overlay fancybox-overlay fancybox-overlay-fixed"></div>
+  <div class="quick-view-product">
+    <div class="primary_block row">
+      <div class="product-left-column col-sm-12 col-md-5 col-lg-5">
+        <div class="clearfix image-block col-xs-12 col-sm-12">
+          <span class="view_full_size">
+              <a class="" title="{{product.name}}" [routerLink]="['detail',product.id]">
+                  <img class="img-responsive" src="{{product.avatar}}" alt="{{product.name}}">
+              </a>
+          </span>
+        </div>
+        <div class="more-view-wrapper clearfix col-xs-12 col-sm-12">
+          <div>
+            <ul class="product-photo-thumbs quickview-more-views-owlslider owl-carousel owl-theme" style="display: block; opacity: 1; visibility: visible;">
+              <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 744px; left: 0px; display: block;"><div class="owl-item" style="width: 124px;"><li><a href="javascript:void(0)" data-imageid="1441801" data-image="//bizweb.dktcdn.net/100/038/419/products/2518068breakfastfruitstrawberr-0191326f-27a1-4dd5-aadb-bfb69ec39df3.jpg?v=1456478319627" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/038/419/products/2518068breakfastfruitstrawberr-0191326f-27a1-4dd5-aadb-bfb69ec39df3.jpg"><img src="//bizweb.dktcdn.net/thumb/compact/100/038/419/products/2518068breakfastfruitstrawberr-0191326f-27a1-4dd5-aadb-bfb69ec39df3.jpg" alt="Proimage"></a></li></div><div class="owl-item" style="width: 124px;"><li><a href="javascript:void(0)" data-imageid="1441801" data-image="//bizweb.dktcdn.net/100/038/419/products/bg-obj01.png?v=1456080673133" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/038/419/products/bg-obj01.png"><img src="//bizweb.dktcdn.net/thumb/compact/100/038/419/products/bg-obj01.png" alt="Proimage"></a></li></div><div class="owl-item" style="width: 124px;"><li><a href="javascript:void(0)" data-imageid="1441801" data-image="//bizweb.dktcdn.net/100/038/419/products/207504-10362069-coffee-jpg-5e37f837-d06b-43cf-add8-4a6214109198.jpg?v=1456080673133" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/038/419/products/207504-10362069-coffee-jpg-5e37f837-d06b-43cf-add8-4a6214109198.jpg"><img src="//bizweb.dktcdn.net/thumb/compact/100/038/419/products/207504-10362069-coffee-jpg-5e37f837-d06b-43cf-add8-4a6214109198.jpg" alt="Proimage"></a></li></div></div></div><div class="owl-controls clickable" style="display: none;"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev">&lt;</div><div class="owl-next">&gt;</div></div></div></ul>
+          </div>
+        </div>
+      </div>
+      <div class="product-right-column col-xs-12 col-sm-7 col-md-7">
+        <div class="product-info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <a class="qwp-name" title="{{product.name}}" [routerLink]="['detail',product.id]">{{product.name}}</a>
+
+          <div class="review hidden">
+            <span class="shopify-product-reviews-badge" data-id=""></span>
+          </div>
+
+          <div class="product-description rte" style="font-size: 10pt" [innerHTML]="product.description.substring(product.description.indexOf('</h3>'), product.description.indexOf('</h3>') + 250)"></div>
+          <h5 class="brand"><span>Nhà sản xuất: </span>{{product.supplier}}</h5>
+          <div class="product-sku">
+            <p>Mã sản phẩm: <span>{{product.id}}</span></p></div>
+          <div class="availability"><p class="available instock">Còn hàng</p></div>
+
+
+          <div class="socialsharing_product no-print">
+            <ul class="social-sharing list-unstyled">
+
+              <li>
+                <a class="btn social-sharing btn-twitter" href="javascript:void(0);" data-type="twitter">
+                  <i class="fa fa-twitter"></i> Tweet
+                </a>
+              </li>
+
+
+              <li>
+                <a class="btn social-sharing btn-facebook" href="javascript:void(0);" data-type="facebook">
+                  <i class="fa fa-facebook"></i> Facebook
+                </a>
+              </li>
+
+
+              <li>
+                <a class="btn social-sharing btn-google-plus" href="javascript:void(0);" data-type="google-plus">
+                  <i class="fa fa-google-plus"></i> Google+
+                </a>
+              </li>
+
+
+
+            </ul>
+          </div>
+          <div style="display:none">
+            <div class="share-desc">' + sharedesc + '</div>
+            <div class="share-title">' + sharetitle + '</div>
+          </div>
+        </div>
+        <div class="product-extra col-xs-12 col-sm-12 col-md-12 col-lg-12 product-item" id="product-1441801">
+          <div>
+            <form (submit)="addCart()" enctype="multipart/form-data" class="variants form-ajaxtocart" id="product-actions-1441801">
+                        <span class="prices">
+                          <span class="price h2  on-sale">{{product.price.toLocaleString('vi')}} đ</span>
+                          <span class="price-product-detail" *ngIf="product.promotions.length !== 0">
+                            <span class="old-price product-price compare-price">34.000,00 đ</span>
+                      	  </span>
+
+                        </span>
+
+              <div class="clearfix"></div>
+              <div class="quantity_wanted_p" style="display: block;">
+                <label for="quantity-detail" class="quantity-selector">Số lượng</label>
+                <input id="quantity-detail" type="number" name="quantity" [(ngModel)]="quantity" min="1" class="quantity-selector-number">
+              </div>
+
+              <div class="clearfix"></div>
+              <button type="submit" name="add" class="ajax_addtocart btn btn-outline">
+                <span>Mua Hàng</span>
+              </button>
+              <input type="hidden" name="id" value="1441801"><input type="hidden" name="variantId" value="2246368"></form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a title="Close" class="quickview-close fancybox-close" (click)="closeViewQuick()">
+    </a>
+  </div>
+</div>

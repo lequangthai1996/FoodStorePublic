@@ -1,0 +1,22 @@
+<div class="more_info_block">
+
+  <ul class="nav nav-tabs tab-info page-product-heading">
+    <li class="active">
+      <a href="#idTab1" data-toggle="tab" class="title_block">Thông tin chi tiết</a>
+    </li>
+    <li>
+      <a href="#idTab2" data-toggle="tab">Nhận xét</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <section id="idTab1" class="tab-pane page-product-box active">
+      <div class="rte" [innerHTML]="description">
+
+      </div>
+    </section>
+    <section id="idTab2" class="tab-pane page-product-box">
+      <fb-comments numposts="3"></fb-comments>
+    </section>
+  </div>
+
+</div>

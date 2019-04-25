@@ -1,0 +1,56 @@
+#login-page h1, #login-page h2, #login-page h3 {
+    font-family: Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #f8694d;
+    margin: 0px 0px 18px;
+    line-height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+}
+#login-page .login-box {
+    border: 1px solid #e5e5e5;
+    min-height: 350px;
+    padding: 20px;
+    background: #fff;
+}
+
+#login-page h1, #login-page h2, #login-page h3 {
+    font-family: Arial,sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #f8694d;
+    margin: 0px 0px 18px;
+    line-height: 40px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.page-subheading {
+    position: relative;
+    background: #333;
+    font-family: Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 11px 30px;
+    color: #fff;
+    letter-spacing: 2px;
+    line-height: normal;
+}
+#login-page .register-box {
+    border: 1px solid #e5e5e5;
+    min-height: 360px;
+    padding: 20px;
+    background: #fff;
+}
+
+#login-page .login-box p {
+    margin: 0px;
+}
+
+.required {
+    color: red;
+}
+.btn:hover, .btn:focus {
+    color: #fff;
+    text-decoration: none;
+}

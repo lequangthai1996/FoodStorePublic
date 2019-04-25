@@ -1,0 +1,50 @@
+<div class="list_product_cart clearfix" data-id="3203311">
+
+  <div class="cpro_item col-xs-12 col-sm-2 col-md-2 cart-img-column">
+    <div class="cpro_item_inner">
+      <a [routerLink]="['/detail',product.id]"
+         class="cart__image">
+        <img width="75" height="75" alt=""
+             alt="{{ product.name }}"
+             src="{{ product.avatar }}"
+             onerror="this.src='./assets/images/upload/noimage.gif'">
+      </a>
+    </div>
+  </div>
+  <div class="cpro_item col-xs-12 col-sm-3 col-md-3">
+    <div class="cpro_item_inner">
+      <span class="visible-xs">Tên: </span>
+      <a [routerLink]="['/detail',product.id]" class="product_name">
+        {{ product.name }}
+      </a>
+    </div>
+  </div>
+  <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
+    <div class="cpro_item_inner">
+      <span class="visible-xs">Giá: </span>
+      <span *ngIf="product.promotions.length != 0" class="price product-price">{{ (product.price * (1 - product.promotions[0].percent/100)).toLocaleString('vi') }}₫</span>
+      <span *ngIf="product.promotions.length == 0" class="price product-price">{{ (product.price).toLocaleString('vi') }}₫</span>
+    </div>
+  </div>
+  <div class="cpro_item text-center col-xs-12 col-sm-2 col-md-2">
+    <div class="cpro_item_inner">
+      <span class="visible-xs">Số lượng: </span>
+      <input class="input-text qty" [ngModel]="product.quantityCart" (change)="changeQuantity($event.target.value)" type="number" name="Lines"
+             min="0" data-id="3203311">
+    </div>
+  </div>
+  <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
+    <div class="cpro_item_inner">
+      <span class="visible-xs">Tổng: </span>
+      <span *ngIf="product.promotions.length == 0" class="price product-price">{{(product.price * product.quantityCart).toLocaleString('vi') }} ₫</span>
+      <span *ngIf="product.promotions.length != 0" class="price product-price">{{ (product.price *(1 - product.promotions[0].percent/100) * product.quantityCart).toLocaleString('vi') }} ₫</span>
+    </div>
+  </div>
+  <div class="cpro_item col-xs-12 col-sm-1 col-md-1">
+    <div class="cpro_item_inner">
+      <a (click)="removeItem(product)"  class="cart__remove" data-id="3203311">
+        <small>Xóa</small>
+      </a>
+    </div>
+  </div>
+</div>

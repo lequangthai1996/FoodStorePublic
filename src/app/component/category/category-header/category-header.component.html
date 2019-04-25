@@ -1,0 +1,30 @@
+<div class="content_scene_cat clearfix">
+  <div class="content_scene_cat_bg">
+    <div class="image">
+      <img src="http://bizweb.dktcdn.net/100/038/419/themes/49902/assets/list_collection_default.png?1495677182625"
+           alt="Tất cả sản phẩm" class="img-responsive">
+    </div>
+    <h1 class="page-heading product-listing">{{ title.getTitle() }}</h1>
+
+  </div>
+</div>
+<div class="category-heading clearfix">
+  <div class="sortPagiBar clearfix row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <!-- /snippets/collection-sorting.liquid -->
+      <div class="form-horizontal">
+        <label for="SortBy" class="hidden-xs">Lọc theo</label>
+        <select name="SortBy" id="SortBy" [ngModel] = "sort" (change)="changeSort($event.target.value)" >
+          <option value="manual">Nổi bật</option>
+          <option value="best-selling">Bán chạy nhất</option>
+          <option value="+name">Bảng chữ cái, A-Z</option>
+          <option value="-name">Bảng chữ cái, Z-A</option>
+          <option value="+price">Giá, thấp đến cao</option>
+          <option value="-price">Giá, cao đến thấp</option>
+          <option value="-created_at">Ngày, mới tới cũ</option>
+          <option value="+created_at">Ngày, cũ tới mới</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

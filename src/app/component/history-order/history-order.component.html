@@ -1,0 +1,49 @@
+<div class="new-collections">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header text-center">
+            <h3 class="box-title">Lịch sử đặt hàng</h3>
+          </div>
+          <div class="box-body table-responsive no-padding animated wow slideInUp" data-wow-delay=".5s">
+            <table class="table table-hover  timetable_sub" id="table-order-history" [mfData]="listOrders" #mf="mfDataTable" [mfRowsOnPage]="5">
+              <thead>
+              <tr>
+                <th><mfDefaultSorter by="id">ID</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="created_at">Ngày đặt</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="status">Trạng thái</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="address">Địa chỉ</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="name">Tên</mfDefaultSorter></th>
+                <th><mfDefaultSorter by="phone">Số điện thoại</mfDefaultSorter></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor=" let order of  mf.data">
+                <td>{{order.id}}</td>
+                <td>{{order.created_at}}</td>
+                <td>{{order.status == '0' ? 'Hủy': order.status == '1' ? 'Chờ' : order.status == '2' ? 'Đã xác nhận': 'Đã hoàn thành'}}</td>
+                <td>{{order.address}}</td>
+                <td>{{order.name}}</td>
+                <td>{{order.phone}}</td>
+                <td>
+                  <button class="btn btn-default" style="color: #D8703F;"(click)="detailOrder(order.id)">Detail</button>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <td colspan="5">
+                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

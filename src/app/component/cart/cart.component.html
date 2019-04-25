@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div id="center_column" class="center_column col-md-12">
+            <div id="cart-page">
+                <form action="/cart" method="post" novalidate="" class="cart">
+                    <h1 class="page-header">Giỏ hàng</h1>
+                    <div class="page-content">
+                        <div class="cart_header_labels clearfix">
+                            <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                                <div class="cart_product first_item">
+                                    Tên
+                                </div>
+                            </div>
+                            <div class="label_item col-xs-12 col-sm-3 col-md-3">
+                                <div class="cart_description item">
+                                    Mô tả
+                                </div>
+                            </div>
+                            <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                                <div class="cart_price item">
+                                    Giá
+                                </div>
+                            </div>
+                            <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                                <div class="cart_quantity item">
+                                    Số lượng
+                                </div>
+                            </div>
+                            <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                                <div class="cart_total item">
+                                    Tổng
+                                </div>
+                            </div>
+                            <div class="label_item col-xs-12 col-sm-1 col-md-1">
+                                <div class="cart_delete last_item">
+                                    Xóa
+                                </div>
+                            </div>
+                        </div>
+                        <app-product-cart *ngFor="let item of cart.carts" [product]="item"></app-product-cart>
+                        <app-button-cart></app-button-cart>
+                    </div>
+                </form>
+                <p class="cart_navigation clearfix">
+                    <a class="btn btn-inverse" (click)="back()" title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

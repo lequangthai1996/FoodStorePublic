@@ -1,0 +1,150 @@
+<div class="primary_block" *ngIf="item !== null" >
+    <div class="row">
+        <div class="product-left-column col-xs-12 col-sm-12 col-md-5">
+            <div id="image-block" class="image clearfix">
+                <a id="view_full_size">
+                    <img class="img-responsive" src="{{item.avatar}}"
+                         alt="{{item.name}}"/>
+                    <span class="span_link no-print status-enable"></span>
+                </a>
+            </div>
+            <div id="views_block" class="clearfix ">
+                <div id="thumbs_list" class="no-owl">
+                    <ul id="thumblist" class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+
+                        <div class="owl-wrapper-outer">
+                            <div class="owl-wrapper" style="width: 588px; left: 0px; display: block;">
+                                <div class="owl-item" style="width: 98px;" *ngFor=" let image of item.imageItems ">
+                                    <li id="thumbnail_1" class="thumb_item shown ">
+                                        <a href="javascript:void(0)" data-imageid="3875053"
+                                           data-image="image.image"
+                                           data-zoom-image="image.image"
+                                           title="{{item.name}}">
+                                            <img class="img-responsive img-fix" id="thumb_1"
+                                                 src="{{image.image}}"
+                                                 alt="">
+                                        </a>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="owl-controls clickable" style="display: none;">
+                            <div class="owl-pagination">
+                                <div class="owl-page"><span class=""></span></div>
+                            </div>
+                            <div class="owl-buttons">
+                                <div class="owl-prev">&lt;</div>
+                                <div class="owl-next">&gt;</div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="product-center-column col-xs-12 col-sm-12 col-md-7">
+            <h1 itemprop="name">{{item.name}}</h1>
+            <!--<div class="product-description rte" itemprop="description">-->
+               <!--{{item.description}}-->
+            <!--</div>-->
+
+
+            <div class="product-extra">
+                <ul class="list-unstyled description no-padding">
+                    <li><b>Nhãn hiệu: </b><a href="/vendors?query="></a></li>
+                    <li><b>Tình trạng: </b>
+                        <span class="availability">
+                            <span class="available instock">{{item.status}}</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-right-column float-right col-xs-12 col-sm-12 col-md-7">
+            <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                <meta itemprop="priceCurrency" content="VND">
+                <link itemprop="availability" href="http://schema.org/InStock">
+
+                <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
+                    <div class="product_price_content" *ngIf="item.promotions.length != 0">
+                        <span class="price product-price sale-price">
+                           <span>{{(item.price *(1 - item.promotions[0].percent/100)).toLocaleString('vi')}} ₫</span>
+                         </span>
+                        <span class="old-price product-price">
+                          <span>{{item.price.toLocaleString('vi')}} ₫</span>
+                        </span>
+                    </div>
+                    <div class="product_price_content" *ngIf="item.promotions.length == 0">
+                          <span class="price product-price sale-price">
+                           <span>{{item.price.toLocaleString('vi')}} ₫</span>
+                         </span>
+                    </div>
+                    <input type="hidden" name="variantId" value="2246368">
+
+
+                    <div class="quantity_wanted_p clearfix">
+                        <label for="quantity" class="quantity-selector">Số lượng</label>
+                        <div class="pull-left">
+                            <div class="custom pull-left">
+                                <input type="number" id="Quantity" name="quantity" value="1" min="1"
+                                       class="input-text qty fix-inp-product">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-box clear-fix">
+                        <button (click)="addCart()" class="btn btn-outline btn-cart ajax_addtocart" title="Thêm vào giỏ hàng">
+                            <span><i class="icon-basket"></i> Thêm vào giỏ hàng</span></button>
+
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="line-product"></div>
+
+            <ul id="usefull_link_block" class="clearfix no-print list-inline">
+                <li class="print">
+                    <a href="javascript:print();"><i class="fa fa-print"></i> In</a>
+                </li>
+            </ul>
+            <div class="line-product"></div>
+
+            <div class="socialsharing_product no-print">
+                <ul class="social-sharing list-unstyled">
+
+                    <li>
+                        <a class="btn social-sharing btn-twitter" href="javascript:void(0);"
+                           data-type="twitter">
+                            <i class="fa fa-twitter"></i> Tweet
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a class="btn social-sharing btn-facebook"
+                           data-type="facebook" (click)="share()" >
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a class="btn social-sharing btn-google-plus" href="javascript:void(0);"
+                           data-type="google-plus">
+                            <i class="fa fa-google-plus"></i> Google+
+                        </a>
+                    </li>
+
+
+                </ul>
+                <fb-like href="https://github.com/zyra/ngx-facebook"></fb-like>
+            </div>
+            <div style="display:none" id="content-share">
+                <div class="share-desc">' + sharedesc + '</div>
+                <div class="share-title">' + sharetitle + '</div>
+            </div>
+        </div>
+    </div>
+</div>

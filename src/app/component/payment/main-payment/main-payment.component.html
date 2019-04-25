@@ -1,0 +1,314 @@
+<div class="main" role="main" *ngIf="tokenService.currentUser !== undefined">
+  <div class="main_header">
+    <div class="shop logo logo--left">
+      <h1 class="shop__name">
+        <a href="/">
+          Food-Market
+        </a>
+      </h1>
+    </div>
+  </div>
+  <div class="main_content stateful-form">
+    <form [formGroup]="orderForm">
+    <div class="row">
+      <div class="col-md-6 col-lg-6">
+        <div class="section" formGroupName="personal">
+          <div class="section__header">
+            <div class="layout-flex layout-flex--wrap">
+              <h2 class="section__title layout-flex__item layout-flex__item--stretch">
+                <i class="fa fa-id-card-o fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
+                <label class="control-label">Thông tin mua hàng</label>
+              </h2>
+
+            </div>
+          </div>
+          <div class="section__content">
+            <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['personal'].get('email').valid && orderForm.controls['personal'].get('email').touched}">
+              <div>
+                <label class="field__input-wrapper"  [ngClass]="{'js-is-focused':orderForm.controls['personal'].get('email').value !== ''}">
+                  <span class="field__label">
+                      Email
+                  </span>
+                  <input onFocus="true"
+                         type="email"
+                         formControlName="email"
+                         class="field__input form-control"
+                         id="email"
+                         data-error="Vui lòng nhập email đúng định dạng"
+                         required=""
+                         readonly
+                         [disabled]="false"
+                         pattern="^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
+                </label>
+                <div *ngIf="orderForm.controls['personal'].get('email').hasError('required') && orderForm.controls['personal'].get('email').touched" class="alert alert-danger">Bạn phải nhập email.</div>
+                <div *ngIf="!orderForm.controls['personal'].get('email').hasError('required') && orderForm.controls['personal'].get('email').hasError('email') && orderForm.controls['personal'].get('email').touched" class="alert alert-danger">Bạn phải nhập đúng định dạng email.</div>
+              </div>
+              <div class="help-block with-errors">
+              </div>
+            </div>
+            <div class="billing">
+              <div>
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['personal'].get('name').valid && orderForm.controls['personal'].get('name').touched}">
+                  <div class="field__input-wrapper" [ngClass]="{'js-is-focused':orderForm.controls['personal'].get('name').value !== ''}">
+                    <span class="field__label">
+                        Họ và tên
+                    </span>
+                    <input readonly onFocus="true" formControlName="name" type="text"  class="field__input form-control" id="_billing_address_last_name" data-error="Vui lòng nhập họ tên" required="">
+                   </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['personal'].get('name').hasError('required') && orderForm.controls['personal'].get('name').touched" class="alert alert-danger">Bạn phải nhập name.</div>
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['personal'].get('phone').valid && orderForm.controls['personal'].get('phone').touched}">
+                  <div class="field__input-wrapper" [ngClass]="{'js-is-focused':orderForm.controls['personal'].get('phone').value !== ''}">
+                      <span class="field__label">
+                          Số điện thoại
+                      </span>
+                    <input  readonly onFocus="true"
+                           formControlName="phone"
+                           type="tel"
+                           minlength="10"
+                           maxlength="12"
+                           class="field__input form-control"
+                           id="_billing_address_phone">
+                  </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['personal'].get('phone').hasError('required') && orderForm.controls['personal'].get('phone').touched" class="alert alert-danger">Bạn phải nhập số điện thoại.</div>
+                    <div *ngIf="orderForm.controls['personal'].get('phone').hasError('pattern') && orderForm.controls['personal'].get('phone').touched" class="alert alert-danger">Bạn phải chưa đúng định dạng của số điện thoại.</div>
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['personal'].get('address').valid && orderForm.controls['personal'].get('address').touched}">
+                  <div class="field__input-wrapper" [ngClass]="{'js-is-focused':orderForm.controls['personal'].get('address').value !== ''}">
+                    <span class="field__label">
+                        Địa chỉ
+                    </span>
+                    <input readonly onFocus="true" formControlName="address" type="text" class="field__input form-control" id="_billing_address_address1">
+                  </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['personal'].get('address').hasError('required') && orderForm.controls['personal'].get('address').touched" class="alert alert-danger">Bạn phải nhập địa chỉ.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="error hide">
+                    <label>Khu vực này không hỗ trợ vận chuyển</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section pt10">
+          <div class="section__content">
+            <div class="form-group">
+              <div class="checkbox-wrapper">
+                <div class="checkbox__input">
+                  <input class="input-checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="ortherShip" type="checkbox" value="false" name="otherAddress" id="other_address">
+                </div>
+                <label class="checkbox__label" for="other_address">
+                  Giao hàng đến địa chỉ khác
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section pt10" formGroupName="shipAddress" *ngIf="ortherShip">
+          <div class="section__header">
+            <h2 class="section__title">
+              <i class="fa fa-id-card-o fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
+              <label class="control-label">
+                Thông tin nhận hàng
+              </label>
+            </h2>
+          </div>
+          <div class="section__content">
+            <div class="shipping">
+              <div>
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['shipAddress'].get('name').valid && orderForm.controls['shipAddress'].get('name').touched}">
+                  <div class="field__input-wrapper">
+                      <span class="field__label">
+                          Họ và tên
+                      </span>
+                    <input onFocus="true" formControlName="name" type="text" class="field__input form-control" id="_shipping_address_last_name" required="">
+                  </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['shipAddress'].get('address').hasError('required') && orderForm.controls['shipAddress'].get('name').touched" class="alert alert-danger">Bạn phải nhập tên người nhận.</div>
+                  </div>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['shipAddress'].get('phone').valid && orderForm.controls['shipAddress'].get('phone').touched}">
+                  <div class="field__input-wrapper">
+                    <span class="field__label">
+                        Số điện thoại
+                    </span>
+                    <input onFocus="true"
+                           formControlName="phone"
+                           type="text"
+                           minlength="10"
+                           maxlength="12"
+                           class="field__input form-control" id="_shipping_address_phone" >                   </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['shipAddress'].get('phone').hasError('required') && orderForm.controls['shipAddress'].get('phone').touched" class="alert alert-danger">Bạn phải nhập số điện thoại.</div>
+                    <div *ngIf="orderForm.controls['shipAddress'].get('phone').hasError('pattern') && orderForm.controls['shipAddress'].get('phone').touched" class="alert alert-danger">Bạn phải chưa đúng định dạng của số điện thoại.</div>
+                  </div>
+                </div>
+
+
+                <div class="form-group" [ngClass]="{'has-error':!orderForm.controls['shipAddress'].get('address').valid && orderForm.controls['shipAddress'].get('address').touched}">
+                  <div class="field__input-wrapper">
+                                                        <span class="field__label">
+                                                            Địa chỉ
+                                                        </span>
+                    <input onFocus="true" formControlName="address" type="text" class="field__input form-control" id="_shipping_address_address1" >
+                  </div>
+                  <div class="help-block with-errors">
+                    <div *ngIf="orderForm.controls['shipAddress'].get('address').hasError('required') && orderForm.controls['shipAddress'].get('address').touched" class="alert alert-danger">Bạn phải nhập địa chị giao hàng.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="field__input-wrapper field__input-wrapper--select">
+                    <label class="field__label" for="BillingDistrictId">
+                      Quận huyện
+                    </label>
+                    <select onFocus="true" class="field__input field__input--select form-control" name="ShippingDistrictId" id="BillingDistrictId" ><option value="">--- Chọn quận huyện ---</option></select>
+                  </div>
+                  <div class="help-block with-errors"></div>
+                </div>
+
+
+                <div class="form-group">
+                  <div class="error hide">
+                    <label>Khu vực này không hỗ trợ vận chuyển</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section pt10">
+          <div class="section__content">
+            <div class="form-group m0">
+              <textarea formControlName="note" class="field__input form-control m0" placeholder="Ghi chú"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <div class="section shipping-method">
+          <div class="section__header">
+            <h2 class="section__title">
+              <i class="fa fa-truck fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
+              <label class="control-label">Vận chuyển</label>
+            </h2>
+          </div>
+          <div class="section__content">
+            <div class="content-box"><div class="content-box__row"><div class="radio-wrapper"><div class="radio__input"><input class="input-radio" checked type="radio" value="42758,0" name="ShippingMethod" id="shipping_method_42758" fee="5000"></div><label class="radio__label" for="shipping_method_42758"> <span class="radio__label__primary">Giao hàng tận nơi</span><span class="radio__label__accessory"><span class="content-box__emphasis">5.000₫</span></span></label> </div> <!-- /radio-wrapper--> </div></div>
+          </div>
+        </div>
+        <div class="section payment-methods">
+          <div class="section__header">
+            <h2 class="section__title">
+              <i class="fa fa-credit-card fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
+              <label class="control-label">Thanh toán</label>
+            </h2>
+          </div>
+          <div class="section__content">
+            <div class="content-box">
+              <div class="content-box__row">
+                <div class="radio-wrapper">
+                  <div class="radio__input">
+                    <input class="input-radio" checked="checked" type="radio" value="40746" name="PaymentMethodId" data-check-id="4" checked="">
+                  </div>
+                  <label class="radio__label">
+                    <span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>
+                    <span class="radio__label__accessory">
+                    <ul>
+                        <li class="payment-icon-v2 payment-icon--4">
+								          <i class="fa fa-money payment-icon-fa" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                </span>
+                  </label>
+                </div> <!-- /radio-wrapper-->
+              </div>
+              <div class="content-box__row">
+              <div class="radio-wrapper" id="payment-gateway-subfields-40746">
+                <label class="radio__label">
+                  <span class="radio__label__primary">Thanh toán trực tiếp</span>
+                </label>
+                  <p class="text-center" style="cursor: pointer;">
+                    <a (click)="paymentOnline()">
+                      <img
+                              src="http://www.baokim.vn/developers/uploads/baokim_btn/thanhtoan-l.png"
+                              alt="Thanh toán an toàn với Bảo Kim !" border="0"
+                              title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+                  </p>
+                  <div id="paypal-button"></div>
+              </div> <!-- /radio-wrapper-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section hidden-md hidden-lg">
+          <div class="form-group clearfix m0">
+            <input class="btn btn-primary btn-checkout" type="button" value="ĐẶT HÀNG">
+          </div>
+          <div class="text-center mt20">
+            <a class="previous-link" href="/cart">
+              <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+              <span>Quay về giỏ hàng</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+
+
+  <div class="main_footer footer unprint">
+
+
+
+    <div class="mt10"></div>
+  </div>
+  <div class="modal fade" id="refund-policy" data-width="" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Chính sách hoàn trả</h4>
+        </div>
+        <div class="modal-body">
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="privacy-policy" data-width="" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Chính sách bảo mật</h4>
+        </div>
+        <div class="modal-body">
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="terms-of-service" data-width="" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Điều khoản sử dụng</h4>
+        </div>
+        <div class="modal-body">
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

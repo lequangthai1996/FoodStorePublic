@@ -1,0 +1,86 @@
+<div class="sidebar">
+  <div class="sidebar_header">
+    <h2>
+      <label class="control-label">Đơn hàng</label>
+      <label class="control-label">({{ cart.carts.length }} sản phẩm)</label>
+    </h2>
+    <hr class="full_width">
+  </div>
+  <div class="sidebar__content">
+    <div class="order-summary order-summary--product-list order-summary--is-collapsed">
+      <div class="summary-body summary-section summary-product">
+        <div class="summary-product-list">
+          <table class="product-table">
+            <tbody>
+            <tr *ngFor="let product of cart.carts" class="product product-has-image clearfix">
+              <td>
+                <div class="product-thumbnail">
+                  <div class="product-thumbnail__wrapper">
+                    <img src="{{ product.avatar }}"
+                         alt="Cơm gà" class="product-thumbnail__image">
+
+                  </div>
+                  <span class="product-thumbnail__quantity" aria-hidden="true">{{ product.quantityCart }}</span>
+                </div>
+              </td>
+              <td class="product-info">
+                <span class="product-info-name">
+                    {{ product.name }}
+                </span>
+              </td>
+              <td  *ngIf="product.promotions.length != 0" class="product-price text-right">
+                {{ (product.price * (1 - product.promotions[0].percent/100)).toLocaleString('vi') }} ₫
+              </td>
+              <td  *ngIf="product.promotions.length == 0" class="product-price text-right">
+                {{ (product.price * product.quantityCart).toLocaleString('vi') }} ₫
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="order-summary__scroll-indicator">
+            Cuộn chuột để xem thêm
+            <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <hr class="m0">
+    </div>
+    <div class="order-summary order-summary--total-lines">
+      <div class="summary-section border-top-none--mobile">
+        <div class="total-line total-line-subtotal clearfix">
+          <span class="total-line-name pull-left">
+              Tạm tính
+          </span>
+          <span class="total-line-subprice pull-right">{{ cart.getTotal().toLocaleString('vi') }} đ</span>
+        </div>
+        <div class="total-line total-line-shipping clearfix">
+          <span class="total-line-name pull-left">
+              Phí vận chuyển
+          </span>
+          <span class="total-line-shipping pull-right">5.000₫</span>
+        </div>
+        <div class="total-line total-line-total clearfix">
+            <span class="total-line-name pull-left">
+                Tổng cộng
+            </span>
+          <span class="total-line-price pull-right">{{(cart.getTotal() + 5000).toLocaleString('vi') }} đ</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group clearfix hidden-sm hidden-xs">
+      <div class="field__input-btn-wrapper mt10">
+        <a class="previous-link" [routerLink]="['/cart']">
+          <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+          <span>Quay về giỏ hàng</span>
+        </a>
+        <input (click)="order()" class="btn btn-primary btn-checkout" type="button" value="ĐẶT HÀNG">
+      </div>
+    </div>
+    <div class="form-group has-error">
+      <div class="help-block ">
+        <ul class="list-unstyled">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id":1,
+      "title": "Food 1",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 1",
+      "price": 10000
+    },
+    {
+      "id":2,
+      "title": "Food 2",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 2",
+      "price": 10000
+    },
+    {
+      "id":3,
+      "title": "Food 3",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 3",
+      "price": 10000
+    },
+    {
+      "id":4,
+      "title": "Food 4",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 4",
+      "price": 3924
+    },
+    {
+      "id":5,
+      "title": "Food 5",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 3",
+      "price": 7423
+    },
+    {
+      "id":6,
+      "title": "Food 6",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 4",
+      "price": 3412
+    },
+    {
+      "id":7,
+      "title": "Food 7",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 3",
+      "price": 3223
+    },
+    {
+      "id":8,
+      "title": "Food 8",
+      "image": "./assets/images/upload/mon1.jpg",
+      "content": "Content 4",
+      "price": 9000
+    }
+  ]
+}

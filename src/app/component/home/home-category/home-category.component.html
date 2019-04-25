@@ -1,0 +1,84 @@
+<section class="col-lg-3 col-md-3 col-sm-12 col-xs-12 block_verticalmenu">
+  <div id="apollo-verticalmenu" class="block apollo-verticalmenu">
+      <div class="title_block">
+          <span>Danh mục</span>
+          <span class="shapes round">
+            <em class="shapes bottom"></em>
+          </span>
+      </div>
+      <div class="block_content" style="">
+          <div id="verticalmenu" class="verticalmenu" role="navigation">
+              <div class="navbar">
+                  <div class="navbar-ẽ1-collapse">
+                      <ul class="nav navbar-nav nav-verticalmenu">
+                          <li class="" *ngFor="let category of categories">
+                              <a [routerLink]="['/category', category.id]" title="{{ category.name }}">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-glass"></i>
+                                    <span class="menu-title">{{ category.name }}</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <!-- <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-star-o"></i>
+                                    <span class="menu-title">Cơm</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-cutlery"></i>
+                                    <span class="menu-title">Bún Mỳ</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-pagelines"></i>
+                                    <span class="menu-title">Hoa quả</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-fire"></i>
+                                    <span class="menu-title">Đồ Nưóng</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-cutlery"></i>
+                                    <span class="menu-fire">Hải Sản</span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-cutlery"></i>
+                                    <span class="menu-fire">Cơm </span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="">
+                              <a href="/category" title="">
+                                  <span class="menu-icon has-icon">
+                                    <i class="fa fa-cutlery"></i>
+                                    <span class="menu-fire">Lẩu</span>
+                                  </span>
+                              </a>
+                          </li> -->
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

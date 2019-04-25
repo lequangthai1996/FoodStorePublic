@@ -1,0 +1,74 @@
+<section class="main-container col1-layout">
+    <div id="login-page" class="container">
+        <div class="account-login">
+            <div class="page-title">
+                <h1>Đăng nhập</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 registered-users">
+                    <div class="login-box">
+                        <form accept-charset='UTF-8' [formGroup]="loginForm" (ngSubmit)="save(loginForm.value)">
+                            <input name='FormType' type='hidden' value='customer_login' />
+                            <input name='utf8' type='hidden' value='true' />
+                            <h1 class="page-subheading"><span>Đăng nhập</span></h1>
+                            <p>Nếu bạn có tài khoản, hãy đăng nhập dưới đây.</p>
+
+                            <ul class="form-list">
+                                <li>
+                                    <label for="email">Email <span class="required">*</span></label>
+                                    <br>
+                                    <input type="email" class="form-control" title="email" formControlName="email" id="email" placeholder="Email">
+                                </li>
+                                <li>
+                                    <label for="pass">Mật khẩu <span class="required">*</span></label>
+                                    <br>
+                                    <input type="password" class="form-control" title="Mật khẩu" formControlName="password" id="pass" placeholder="Mật khẩu">
+                                </li>
+                            </ul>
+                            <p class="required">* Bắt buộc</p>
+
+                            <div class="buttons-set">
+                                <button id="send2" type="submit" class="btn btn-outline"><span><i class="fa fa-lock"></i>&nbsp;Đăng nhập</span></button>
+                                <a href="#recover" onclick="showRecoverPasswordForm();return false;" id="RecoverPassword">Mất mật khẩu?</a>
+                            </div>
+                        </form>
+                        <div id="recover_password" style="display: none;">
+                            <h1 class="page-subheading"><span>Đặt lại mật khẩu</span></h1>
+                            <p>Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.</p>
+                            <form accept-charset='UTF-8' action='/account/recover' id='recover_customer_password' method='post'>
+                                <input name='FormType' type='hidden' value='recover_customer_password' />
+                                <input name='utf8' type='hidden' value='true' />
+
+                                <ul class="form-list">
+                                    <li>
+                                        <label for="email">Email<span class="required">*</span></label>
+                                        <br>
+                                        <input type="email" class="form-control" value="" title="email" name="email" id="recover-email" placeholder="Email">
+                                    </li>
+                                </ul>
+                                <div class="buttons-set">
+                                    <p>
+                                        <input type="submit" class="btn btn-outline" value="Gửi">
+                                    </p>
+                                    hoặc <a href="#" onclick="hideRecoverPasswordForm();return false;">Hủy</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 new-users">
+
+                    <div class="register-box">
+                        <h1 class="page-subheading"><span>Đăng ký</span></h1>
+                        <p>Tạo tài khoản để quản lý đơn hàng, và các thông tin thanh toán, gửi hàng một cách đơn giản hơn.</p>
+                        <div class="buttons-set">
+                            <!--<button class="btn btn-outline" ><a [routerLink]="['/register']"><span><i class="fa fa-user"></i>&nbsp;Tạo tài khoản</span></a></button>-->
+                            <a [routerLink]="['/register']"><span class="btn btn-outline"><i class="fa fa-user"></i>&nbsp;Tạo tài khoản</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

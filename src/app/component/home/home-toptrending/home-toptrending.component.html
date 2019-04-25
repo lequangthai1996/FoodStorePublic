@@ -1,0 +1,62 @@
+<div class="hidden-md col-lg-3 col-md-12 block category_productlist">
+  <div id="productlistcategory01" class="products_block block">
+    <h2 class="page-subheading ">Nổi bật </h2>
+    <div class="block_content">
+      <div class="product_list_owl">
+        <div class="owl-carousel slide owl-theme" style="display: block; opacity: 1;">
+          <div class="owl-wrapper-outer">
+            <div class="owl-wrapper" style="left: 0px; display: block;">
+              <div class="owl-item active first last" style="">
+                <div class="item">
+                  <!-- start product khuyen mai -->
+                  <div class="product_block" *ngFor=" let item of itemsPromotion; let i=index">
+                    <div class="item-variant clearfix product-block" *ngIf="i<5">
+                      <div class="product-meta">
+                        <h3 class="name">
+                          <a class="product-name" [routerLink]="['/detail',item.id]"
+                             title="{{item.name}}">{{item.name}}</a>
+                        </h3>
+                        <div class="review clearfix">
+                          <span class="shopify-product-reviews-badge"></span>
+                        </div>
+                        <div class="content_price" *ngIf="item.promotions.length != 0">
+                          <span class="price product-price sale-price">
+                           <span>{{(item.price *(1 - item.promotions[0].percent/100)).toLocaleString('vi')}} ₫</span>
+                         </span>
+                          <span class="old-price product-price">
+                          <span>{{item.price.toLocaleString('vi')}} ₫</span>
+                        </span>
+                        </div>
+                        <div class="content_price" *ngIf="item.promotions.length == 0">
+                          <span class="price product-price sale-price">
+                           <span>{{item.price.toLocaleString('vi')}} ₫</span>
+                         </span>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="product-image-container image">
+                        <div class="layout-img">
+                          <a class="product_img_link" [routerLink]="['/detail',item.id]"
+                             title="{{item.name}}">
+                            <img class="replace-2x img-responsive" src="{{item.avatar}}"
+                                 alt="{{item.name}}">
+                          </a>
+
+                        </div>
+                        <span *ngIf="item.promotions.length != 0" class="product-label sale-box">
+                                              <span class="label-sale">Sale</span>
+                                            </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end product khuyen mai -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

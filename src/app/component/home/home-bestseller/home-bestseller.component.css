@@ -1,0 +1,9 @@
+.clear_left {
+    clear: left;
+}
+.btn-inverse:hover {
+    background-color: #f8694d;
+}
+.btn-outline-inverse:hover {
+    color: white;
+}

@@ -1,0 +1,118 @@
+<section class="main-container col1-layout">
+    <div id="register-page" class="container">
+        <div class="account-login">
+            <div class="register-box">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 registered-users">
+                        <div class="page-title">
+                            <h1>Đăng ký</h1>
+                        </div>
+                        <form accept-charset='UTF-8'
+                              (submit)="save(registerForm.value)"
+                              [formGroup]="registerForm" novalidate id="customer_register">
+                            <input name='FormType' type='hidden' value='customer_register' />
+                            <input name='utf8' type='hidden' value='true' />
+                            <h3 class="page-subheading">Nếu bạn chưa có tài khoản hãy điền theo mẫu dưới  đây để đăng ký.</h3>
+                            <ul class="form-list">
+                                <li [ngClass]="{'has-error':!registerForm.controls['full_name'].valid
+                                && registerForm.controls['full_name'].touched}">
+                                    <label for="fullName"> Tên <span class="required">*</span></label>
+                                    <br>
+                                    <input type="text" formControlName="full_name" title="Tên" class="form-control" placeholder="Tên" id="fullName">
+                                    <span *ngIf="registerForm.controls['full_name'].hasError('required')
+                                    && registerForm.controls['full_name'].touched" class="error">
+                                        Bạn phải nhập tên của mình.
+                                    </span>
+                                </li>
+                                <li>
+                                    <label> Ngày sinh </label>
+                                    <input formControlName="birthday" type="date" class="form-control" placeholder="Date of Birth">
+                                </li>
+                                <li [ngClass]="{'has-error':!registerForm.controls['email'].valid && registerForm.controls['email'].touched}">
+                                    <label for="email"> Email <span class="required">*</span></label>
+                                    <br>
+                                    <input type="email" value="" class="form-control" title="Email" formControlName="email" id="email" placeholder="Email">
+                                    <span *ngIf="registerForm.controls['email'].hasError('required')
+                                    && registerForm.controls['email'].touched" class="error">
+                                        Bạn phải nhập email.
+                                    </span>
+                                    <span *ngIf="registerForm.controls['email'].hasError('email')
+                                    && registerForm.controls['email'].touched" class="error">
+                                        Bạn phải nhập đúng định dạng email.
+                                    </span>
+                                    <span *ngIf="registerForm.controls['email'].hasError('isEmailUnique')" class="error">
+                                        Email đã được đăng kí.
+                                    </span>
+
+                                </li>
+                                <li>
+                                    <label for="phone_number"> Giới tính <span class="required">*</span></label><br>
+                                    <input type="radio" formControlName="gender" name="gender" id="inlineRadio1" value="true">
+                                    <label>Nam</label>
+                                    <input type="radio" formControlName="gender" name="gender" id="inlineRadio2" value="false">
+                                    <label>Nữ</label>
+                                </li>
+
+                                <li [ngClass]="{'has-error':!registerForm.controls['phone_number'].valid
+                                && registerForm.controls['phone_number'].touched}">
+                                    <label for="phone_number"> Số điện thoại <span class="required">*</span></label>
+                                    <br>
+                                    <input type="text" formControlName="phone_number" title="Số Điện Thoại" class="form-control" placeholder="Số Điện Thoại" id="phone_number">
+                                    <span *ngIf="registerForm.controls['phone_number'].hasError('required')
+                                    && registerForm.controls['phone_number'].touched" class="error">
+                                        Bạn phải nhập số điện thoại của mình.
+                                    </span>
+                                </li>
+                                <li [ngClass]="{'has-error':!registerForm.controls['address'].valid
+                                && registerForm.controls['address'].touched}">
+                                    <label for="address"> Số điện thoại <span class="required">*</span></label>
+                                    <br>
+                                    <input type="text" formControlName="address" title="Địa chỉ" class="form-control" placeholder="Địa chỉ" id="address">
+                                    <span *ngIf="registerForm.controls['address'].hasError('required')
+                                    && registerForm.controls['address'].touched" class="error">
+                                        Bạn phải nhập địa chỉ của mình.
+                                    </span>
+                                </li>
+                                <li>
+                                    <label for="card"> Card </label>
+                                    <br>
+                                    <input type="text" formControlName="card" title="Card" class="form-control" placeholder="Creadit Card" id="card">
+                                </li>
+                                <li [ngClass]="{'has-error':!registerForm.controls['password'].valid && registerForm.controls['password'].touched}">
+                                    <label for="pass"> Mật khẩu <span class="required">*</span></label>
+                                    <br>
+                                    <input type="password" value="" class="form-control" title="Mật khẩu" formControlName="password" id="pass" placeholder="Mật khẩu">
+                                    <span *ngIf="registerForm.controls['password'].hasError('required')
+                                    && registerForm.controls['password'].touched" class="error">
+                                        Bạn phải nhập mật khẩu.
+                                    </span>
+                                </li>
+                                <li [ngClass]="{'has-error':!registerForm.controls['password_confirmation'].valid
+                                && registerForm.controls['password_confirmation'].touched}">
+                                    <label for="password_confirmation">Nhập lại mật khẩu<span
+                                            class="required">*</span></label>
+                                    <input type="password" value="" id="password_confirmation" class="form-control"
+                                           title="Nhập lại mật khẩu" formControlName="password_confirmation" placeholder="Nhập lại mật khẩu">
+                                    <span *ngIf="registerForm.controls['password_confirmation'].hasError('required')
+                                     && registerForm.controls['password_confirmation'].touched" class="error">
+                                        Bạn phải nhập mật khẩu xác nhận
+                                    </span>
+                                    <span *ngIf="registerForm.controls['password_confirmation'].errors?.MatchPassword
+                                     && registerForm.controls['password_confirmation'].touched" class="error">
+                                        Mật khẩu không trùng khớp.
+                                    </span>
+                                </li>
+                            </ul>
+
+                            <p class="required">* Bắt buộc</p>
+                            <div class="buttons-set">
+                                <button id="send2" [disabled]="registerForm.invalid" type="submit" class="btn btn-outline"><span>Đăng ký</span></button>
+                                hoặc <a href="/account/login">Đăng nhập</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+<div class="list_button_cart clearfix">
+  <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+    <p>
+      <span class="cart__subtotal-title">Tổng cộng</span>
+      <span class="h3 cart__subtotal">{{ cart.getTotal().toLocaleString('vi') }} ₫</span>
+    </p>
+    <p><em>Vận chuyển và thuế</em></p>
+    <a class="btn con-ajax-cart btn-inverse" (click)="back()"
+       title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+    <input (click)="updateCart()" type="submit" name="update" class="btn btn-outline update-cart"
+           value="Cập nhật giỏ hàng">
+    <button class="btn btn-outline" title="Tiến hành thanh toán" type="button"
+            [routerLink]="['/checkout']"><span>Tiến hành thanh toán</span>
+    </button>
+
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div id="search_block_page" class="">
+  <form action="/search" method="get" class="search-bar" role="search">
+    <input type="hidden" name="type" value="product">
+    <input id="search_querry_page" class="search_query form-control" type="search" name="query" value=""
+           placeholder="Tìm kiếm ..." aria-label="Tìm kiếm ..." [(ngModel)]="inputSearch">
+    <button id="search_button_page" class="btn btn-sm btn-outline" type="submit" (click)="search(inputSearch)">
+      <i class="fa fa-search"></i>
+      <span class="fallback-text">Tìm kiếm</span>
+    </button>
+  </form>
+</div>

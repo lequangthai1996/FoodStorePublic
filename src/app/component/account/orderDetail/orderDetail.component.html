@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div id="center_column" class="center_column col-md-12">
+      <div id="cart-page">
+        <form method="post" novalidate="" class="cart">
+          <h1 class="page-header">Đơn hàng</h1>
+          <div class="page-content">
+            <div class="cart_header_labels clearfix">
+              <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cart_product first_item">
+                  Tên
+                </div>
+              </div>
+              <div class="label_item col-xs-12 col-sm-3 col-md-3">
+                <div class="cart_description item">
+                  Mô tả
+                </div>
+              </div>
+              <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cart_price item">
+                  Giá
+                </div>
+              </div>
+              <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cart_quantity item">
+                  Số lượng
+                </div>
+              </div>
+              <div class="label_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cart_total item">
+                  Tổng
+                </div>
+              </div>
+              <div class="label_item col-xs-12 col-sm-1 col-md-1">
+                <div class="cart_delete last_item">
+                  Xóa
+                </div>
+              </div>
+            </div>
+            <div  *ngFor="let product of listItem; let index = index" class="list_product_cart clearfix" data-id="3203311">
+              <div class="cpro_item col-xs-12 col-sm-2 col-md-2 cart-img-column">
+                <div class="cpro_item_inner">
+                  <a [routerLink]="['/detail',product.itemVO.id]"
+                     class="cart__image">
+                    <img width="75" height="75" alt=""
+                         alt="{{ product.itemVO.name }}"
+                         src="{{ product.itemVO.avatar }}"
+                         onerror="this.src='./assets/images/upload/noimage.gif'">
+                  </a>
+                </div>
+              </div>
+              <div class="cpro_item col-xs-12 col-sm-3 col-md-3">
+                <div class="cpro_item_inner">
+                  <span class="visible-xs">Tên: </span>
+                  <a [routerLink]="['/detail',product.itemVO.id]" class="product_name">
+                    {{ product.itemVO.name }}
+                  </a>
+                </div>
+              </div>
+              <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cpro_item_inner">
+                  <span class="visible-xs">Giá: </span>
+                  <span *ngIf="product.itemVO.promotions.length != 0" class="price product-price">{{ (product.itemVO.price * (1 - product.itemVO.promotions[0].percent/100)).toLocaleString('vi') }}₫</span>
+                  <span *ngIf="product.itemVO.promotions.length == 0" class="price product-price">{{ (product.itemVO.price).toLocaleString('vi') }}₫</span>
+                </div>
+              </div>
+              <div class="cpro_item text-center col-xs-12 col-sm-2 col-md-2">
+                <div class="cpro_item_inner">
+                  <span class="visible-xs">Số lượng: </span>
+                  <input class="input-text qty" [ngModel]="product.quantityCart" (change)="changeQuantity($event.target.value, index)" type="number" name="Lines"
+                         min="0" data-id="3203311">
+                </div>
+              </div>
+              <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
+                <div class="cpro_item_inner">
+                  <span class="visible-xs">Tổng: </span>
+                  <span *ngIf="product.itemVO.promotions.length == 0" class="price product-price">{{(product.itemVO.price * product.quantityCart).toLocaleString('vi') }} ₫</span>
+                  <span *ngIf="product.itemVO.promotions.length != 0" class="price product-price">{{ (product.itemVO.price *(1 - product.itemVO.promotions[0].percent/100) * product.quantityCart).toLocaleString('vi') }} ₫</span>
+                </div>
+              </div>
+              <div class="cpro_item col-xs-12 col-sm-1 col-md-1">
+                <div class="cpro_item_inner">
+                  <a (click)="removeItem(product)"  class="cart__remove" data-id="3203311">
+                    <small>Xóa</small>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="list_button_cart clearfix">
+              <div class="col-xs-12 col-sm-12 col-md-12 text-right">
+                <p>
+                  <span class="cart__subtotal-title">Tổng cộng</span>
+                  <span class="h3 cart__subtotal">{{ getTotal().toLocaleString('vi') }} ₫</span>
+                </p>
+                <p><em>Vận chuyển và thuế</em></p>
+                <a class="btn con-ajax-cart btn-inverse" (click)="back()"
+                   title="Tiếp tục mua hàng">Tiếp tục mua hàng</a>
+                <input (click)="updateOrder()" type="submit" name="update" class="btn btn-outline update-cart"
+                       value="Cập nhật đơn hàng">
+              </div>
+            </div>
+          </div>
+        </form>
+        <p class="cart_navigation clearfix">
+          <a class="btn btn-inverse" (click)="back()" title="Trở về">Trở về</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

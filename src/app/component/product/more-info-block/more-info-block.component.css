@@ -1,0 +1,10 @@
+.page-product-heading .active a{
+    background-color: orange;
+    color: white;
+}
+.page-product-heading a:hover{
+    color: orange;
+}
+.page-product-heading {
+    border-bottom: solid 1px orange;
+}

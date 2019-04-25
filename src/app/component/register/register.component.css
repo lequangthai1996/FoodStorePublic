@@ -1,0 +1,22 @@
+.required{
+    color:red;
+}
+form ul li label {
+    color: #828282;
+}
+#register-page .has-error .form-control {
+    border-color: #dd4b39;
+    margin-bottom: 0px;
+}
+.has-error .error {
+    color: #dd4b39;
+    display: block;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+}
+input[type="radio"] {
+    width: auto;
+}

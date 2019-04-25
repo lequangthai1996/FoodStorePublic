@@ -1,0 +1,7 @@
+<div class="product_list grid container">
+  <div class=" row">
+    <app-product-block [index]="i" size="4" [class]="'col-md-3 col-xs-6 col-sp-12'"  *ngFor="let item of listResult; let i = index" [product]="item">
+    </app-product-block>
+  </div>
+
+</div>

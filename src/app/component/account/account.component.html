@@ -1,0 +1,130 @@
+<section class="main-container col1-layout">
+
+  <!-- Your Page Content Here -->
+  <div class="container" *ngIf="tokenService.currentUser">
+    <div class="box box-primary clear-fix">
+      <div class="box-header">
+        <h3 class="box-title">Thông tin tài khoản</h3>
+      </div>
+      <div class="box-body">
+        <form class="form-horizontal" enctype="multipart/form-data" [formGroup]="updateForm"
+              (ngSubmit)="update(updateForm.value)">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="text-center">
+              <img [src]="tokenService.currentUser.image" class="avatar img-circle img-thumbnail"
+                   alt=" avatar">
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">{{ 'upload_image' }}</label>
+              <div class="col-md-8">
+                <!--<dropzone [config]="config" [message]="imageDragMessage" (error)="onUploadError($event)" (success)="onUploadSuccess($event)" (removedfile)="onRemoveFile($event)"></dropzone>-->
+              </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'password'  }}</label>
+              <div class="col-md-8">
+                <input class="form-control" type="password" formControlName="password">
+              </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'confirm_password'  }}</label>
+              <div class="col-md-8">
+                <input class="form-control" type="password" formControlName="password_confirmation">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 personal-info">
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'full_name'  }}</label>
+              <div class="col-md-8">
+                <input class="col-md-6 form-control" type="text" formControlName="full_name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">{{ 'email'  }}</label>
+              <div class="col-md-8">
+                <input class="form-control" disabled="" type="text"
+                       formControlName="email">
+              </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'address'  }}</label>
+              <div class="col-md-8">
+                <input class="form-control" type="text"
+                       formControlName="address">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label">{{ 'gender'  }}</label>
+              <div class="col-md-8">
+                <div class="ui-select">
+                  <select class="form-control selèct-hidden-accessible" formControlName="gender"
+                          tabindex="-1" aria-hidden="true">
+                    <option
+                            value="1">{{
+                      'male'  }}
+                    </option>
+                    <option
+                            value="0">{{
+                      'female'  }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'birthday'  }}</label>
+              <div class="col-md-8">
+                <input type="date" class="form-control" id="date-picker" formControlName="birthday">
+              </div>
+            </div>
+            <div class="form-group ">
+              <label class="col-md-4 control-label">{{ 'phone_number'  }}</label>
+              <div class="col-md-8">
+                <input class="form-control" autocomplete="off"
+                       type="text" formControlName="phone_number">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-8">
+                <a class="btn btn-danger" (click)="reset()">{{ 'reset'  }}</a>
+                <button class="btn btn-primary" type="submit">
+                  {{ 'save_changes'  }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="box box-primary">
+      <div class="box-header">
+        <h3 class="box-title">Total Orders</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover" id="table-order-history">
+          <thead>
+          <tr>
+            <th>{{ 'id'  }}</th>
+            <th>{{ 'ordered_at'  }}</th>
+            <th>{{ 'status'  }}</th>
+            <th>{{ 'payment'  }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>2</td>
+            <td>1978-01-01 04:50:01</td>
+            <td><span class="label label-warning">Pending</span></td>
+            <td>10000.00</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+</section>
