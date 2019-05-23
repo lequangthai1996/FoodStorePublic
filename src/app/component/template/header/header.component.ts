@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenService} from '../../../service/token.service';
+import {FormGroup, FormBuilder, Validator, FormControl, Validators} from '@angular/forms';
 import {Http} from '@angular/http';
 import swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import {CartService} from '../../../service/cart.service';
-import {FormBuilder, FormControl} from '@angular/forms';
+import {CategoryService} from '../../../service/category.service';
+import {StoreService} from '../../../service/store.service';
+import { Category } from '../../../models/category.model';
 
 @Component({
     selector: 'app-header',
@@ -17,18 +20,54 @@ export class HeaderComponent implements OnInit {
     user: TokenService;
     cart: CartService;
     inputSearch: any;
-    searchForm: any;
+    searchForm: FormGroup;
+    listCategories: Category[] = [];
+
 
     constructor(private http: Http,
                 private tokenService: TokenService,
                 private cartService: CartService,
-                private _fb: FormBuilder,
+                private categoryService: CategoryService,
+                private fb: FormBuilder,
+                private storeService: StoreService,
                 private router: Router) {
         this.user = this.tokenService;
         this.cart = this.cartService;
+        this.getListCatogory();
     }
 
     ngOnInit() {
+        this.searchForm = this.fb.group({
+            category_id: [0],
+            key_search: ['']
+        })
+
+        this.getListCatogory();
+    }
+    getListCatogory() {
+        this.categoryService.getListCategory().subscribe(
+            result => {
+                console.log(result);
+                if(result['success'] === true) {
+                    this.listCategories = result['data'];
+                    console.log(this.listCategories);
+                }else {
+                    alert("Can't get list category")
+                }
+      
+            }, error => {
+                alert(error);
+            }
+        );
+    }
+
+    onSubmit() {
+        this.storeService.searchStores(this.searchForm.value , 1, 12).subscribe(
+            result => {
+                console.log(result);
+                this.storeService.listStores$.next(result);
+            }
+        )
     }
 
     login(data) {

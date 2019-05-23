@@ -5,6 +5,7 @@ import {CategoryService} from '../../../service/category.service';
 import {PaginationService} from '../../../service/pagination.service';
 import {Http} from '@angular/http';
 import {ActivatedRoute, Route, Router} from '@angular/router';
+import { StoreService } from '../../../service/store.service';
 @Component({
   selector: 'app-home-stores',
   templateUrl: './home-stores.component.html',
@@ -13,9 +14,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 export class HomeStoresComponent implements OnInit {
 
   @ViewChild(StoresListComponent) storesListComponent: StoresListComponent;
-  page: number =1 ;
-  id: number =1;
-  sort: string;
+  page: number;
   private sub: any;
   private sub2: any;
   constructor(
@@ -23,31 +22,42 @@ export class HomeStoresComponent implements OnInit {
               private http: Http,
               private route: ActivatedRoute,
               private router: Router,
-              private categoryService: CategoryService
-  ) { }
+              private categoryService: CategoryService,
+              private storeService: StoreService
+  ) {
+    this.page = 0;
+   }
 
   ngOnInit() {
-    this.getList(this.id, this.page);
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.page = +params['page'];
+      if (!this.page) {
+        this.page = 1;
+      }
+      this.getList(this.page);
+    });
+
+    this.storeService.listStores$.subscribe(v => {
+      console.log(v);
+    });
   }
-  getList (id, page) {
-    if (id === 0) {
-      this.http.get(environment.hostname + '/item/all?page=' + (this.page - 1)
-          + '&size=12').map(res => res.json()).subscribe((data: any) => {
-        console.log(data);
-        this.storesListComponent.items = data.content;
-        this.paginationService.init(data);
-      }, (err: any) => {
-
-      });
-    } else {
-      this.http.get(environment.hostname + '/category/items/' + this.id +
-          '?page=' + (this.page - 1) + '&size=12&sort=' + this.sort).map(res => res.json()).subscribe((data: any) => {
-        console.log(data);
-        this.storesListComponent.items = data.content;
-        this.paginationService.init(data);
-      }, (err: any) => {
-
-      });
+  getList (page: number) {
+    var formSearch = {
+      "categories": [],
+      "key_search": ""
     }
+    this.storeService.searchStores(formSearch, page).subscribe(
+      result => {
+        if(result['success'] === true) {
+          this.storesListComponent.items = result['data'];
+          console.log("xxxx\n" + JSON.stringify(result));
+          let totalPages:number = result['totalPages'];
+          console.log( result['totalPages'])
+
+          let pages = {"totalPages": totalPages, "number": page-1};
+          this.paginationService.init(pages);
+        }
+      }
+    )
   }
 }

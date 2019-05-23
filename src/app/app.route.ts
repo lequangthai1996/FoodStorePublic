@@ -51,7 +51,14 @@ const appRoutes: Routes = [
         path: 'register',
         component: RegisterComponent
     },
-    {path: '', component: HomeComponent},
+    {
+        path: '', 
+        component: HomeComponent
+    },
+    {
+        path: 'store',
+        component: HomeComponent
+    },
     {
         path: 'detail',
         children: [
