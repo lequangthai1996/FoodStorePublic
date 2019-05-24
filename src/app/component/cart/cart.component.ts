@@ -12,7 +12,7 @@ export class CartComponent {
   title = 'app';
   constructor(private cartService: CartService, private _location: Location) {
     this.cart = this.cartService;
-    this.cart.updateCart();
+    //this.cart.updateCart();
   }
   back() {
     this._location.back();

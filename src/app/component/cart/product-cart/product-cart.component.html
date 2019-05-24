@@ -5,9 +5,9 @@
       <a [routerLink]="['/detail',product.id]"
          class="cart__image">
         <img width="75" height="75" alt=""
-             alt="{{ product.name }}"
+             alt="{{ product.description }}"
              src="{{ product.avatar }}"
-             onerror="this.src='./assets/images/upload/noimage.gif'">
+        >
       </a>
     </div>
   </div>
@@ -15,15 +15,15 @@
     <div class="cpro_item_inner">
       <span class="visible-xs">Tên: </span>
       <a [routerLink]="['/detail',product.id]" class="product_name">
-        {{ product.name }}
+        {{ product.description }}
       </a>
     </div>
   </div>
   <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
     <div class="cpro_item_inner">
       <span class="visible-xs">Giá: </span>
-      <span *ngIf="product.promotions.length != 0" class="price product-price">{{ (product.price * (1 - product.promotions[0].percent/100)).toLocaleString('vi') }}₫</span>
-      <span *ngIf="product.promotions.length == 0" class="price product-price">{{ (product.price).toLocaleString('vi') }}₫</span>
+      <span class="price product-price">{{ product.price.toLocaleString('vi') }}₫</span>
+      <span class="price product-price">{{ (product.price).toLocaleString('vi') }}₫</span>
     </div>
   </div>
   <div class="cpro_item text-center col-xs-12 col-sm-2 col-md-2">
@@ -36,8 +36,7 @@
   <div class="cpro_item col-xs-12 col-sm-2 col-md-2">
     <div class="cpro_item_inner">
       <span class="visible-xs">Tổng: </span>
-      <span *ngIf="product.promotions.length == 0" class="price product-price">{{(product.price * product.quantityCart).toLocaleString('vi') }} ₫</span>
-      <span *ngIf="product.promotions.length != 0" class="price product-price">{{ (product.price *(1 - product.promotions[0].percent/100) * product.quantityCart).toLocaleString('vi') }} ₫</span>
+      <span class="price product-price">{{(product.price * product.quantityCart).toLocaleString('vi') }} ₫</span>
     </div>
   </div>
   <div class="cpro_item col-xs-12 col-sm-1 col-md-1">
