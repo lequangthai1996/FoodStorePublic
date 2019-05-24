@@ -6,7 +6,9 @@ import { HomeToptrendingComponent } from './home-toptrending/home-toptrending.co
 import { HomeRiceorderComponent } from './home-new/home-new.component';
 import { HomeSaleComponent } from './home-sale/home-sale.component';
 import { HomeMaterialComponent } from './home-tool/home-tool.component';
-
+import { HomeStoresComponent } from './home-stores/home-stores.component';
+import {StoresListComponent} from './home-stores/stores-list/stores-list.component'
+import {StoreBlockComponent} from './home-stores/stores-list/store-block/store-block.component'
 export const HOMECOMPONENTS = [
   HomeComponent,
 	HomeCategoryComponent,
@@ -15,5 +17,8 @@ export const HOMECOMPONENTS = [
 	HomeToptrendingComponent,
   HomeRiceorderComponent,
 	HomeSaleComponent,
-  HomeMaterialComponent
+  HomeMaterialComponent,
+  HomeStoresComponent,
+  StoresListComponent,
+  StoreBlockComponent
 ]

@@ -1,7 +1,7 @@
-import {Http} from '@angular/http';
-import {Injectable} from '@angular/core';
+import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 import 'rxjs/Rx';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ItemService {
@@ -9,9 +9,14 @@ export class ItemService {
     constructor(private http: Http) {
     }
 
-  getItemByOrder(id) {
-    return this.http.get(environment.hostname + '/orderItem/getItemByOrder/' + id).map(res => res.json());
-  }
+
+    getItemByStoreIdAndCategory(storeId: number, categoryId: number, page: number){
+        return this.http.get(environment.hostname + '/guess/stores/' + storeId + '/items?category=' + categoryId + '&page='+ page).map(res => res.json());
+    }
+
+    getItemByOrder(id) {
+        return this.http.get(environment.hostname + '/orderItem/getItemByOrder/' + id).map(res => res.json());
+    }
     getItemTool() {
         return this.http.get(environment.hostname + '/item/getItemTool?quantity=9').map(res => res.json());
     }
@@ -19,9 +24,9 @@ export class ItemService {
     getItemPromotion() {
         return this.http.get(environment.hostname + '/item/getItemPromotion?quantity=5').map(res => res.json());
     }
-  getItemTrending() {
-    return this.http.get(environment.hostname + '/item/getItemTrending?quantity=5').map(res => res.json());
-  }
+    getItemTrending() {
+        return this.http.get(environment.hostname + '/item/getItemTrending?quantity=5').map(res => res.json());
+    }
 
     getItemNew() {
         return this.http.get(environment.hostname + '/item/getItemNew?quantity=9').map(res => res.json());
@@ -47,7 +52,7 @@ export class ItemService {
         return this.http.get(environment.hostname + '/item/getCategory/' + id).map(res => res.json());
     }
 
-    search(key: string, page: number , size: number) {
+    search(key: string, page: number, size: number) {
         return this.http.get(environment.hostname + '/item/search?key=' + key + '&page=' + page + '&size=' + size)
             .map(res => res.json());
     }

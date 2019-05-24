@@ -47,6 +47,7 @@ export class UpdateInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+      alert("Update info");
       this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getUserDetail').subscribe(data => {
           this.user = data;
           console.log(this.user)

@@ -18,6 +18,7 @@ export class ShowInfoComponent implements OnInit {
     }
 
     ngOnInit() {
+        alert("Show info Order")
         this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getUserDetail').subscribe(data => {
             this.user = data;
         });

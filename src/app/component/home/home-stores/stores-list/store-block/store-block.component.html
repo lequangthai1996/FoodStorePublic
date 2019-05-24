@@ -1,0 +1,73 @@
+<div [ngClass]="{'clear_left': (index % size == 0)}" class="product_block {{class}}">
+  <div class="item-variant clearfix product-block">
+    <div class="product-meta">
+      <h3 class="name">
+        <a class="product-name"
+           routerLink='/stores/{{product.id}}/category/2'
+           title="{{product.name}}">{{product.name}}</a>
+      </h3>
+      <div class="review clearfix">
+        <span class="shopify-product-reviews-badge" data-id="995766"></span>
+      </div>
+
+
+      <div class="clearfix"></div>
+      <div class="product-desc"> Nhà hàng X-Jo là một trong những nhà hàng ẩm thực nổi
+        tiếng trên khu vực Phố Cổ chuyên về ẩm thực của Singapore như các món về gà...
+      </div>
+    </div>
+    <div class="product-image-container image">
+      <div class="layout-img">
+        <a class="product_img_link"
+           [routerLink]="['/detail',product.id]"
+           title="Pizza hải sản">
+          <img class="replace-2x img-responsive"
+               src="{{product.background_image}}"
+               alt="{{product.name}}"
+               onerror="this.src='./assets/images/upload/noimage.gif'"
+               >
+          <span class="product-additional" data-idproduct="995766">
+          <img class="replace-2x img-responsive"
+               src="{{product.background_image}}"
+               onerror="this.src='./assets/images/upload/noimage.gif'"
+               >
+</span>
+        </a>
+      </div>
+
+      <div class="right">
+        <div class="action">
+          <div class="quickview">
+            <a class="btn-inverse btn" (click)="openViewQuick()"
+               data-handle="pizza-hai-san" data-toggle="tooltip" title=""
+               data-original-title="Xem nhanh">
+              <i class="fa fa-search-plus"></i>
+            </a>
+          </div>
+          <div class="view_detail">
+            <a class="btn btn-inverse lnk_view"
+               [routerLink]="['/detail',product.id]"
+               data-toggle="tooltip" title="" data-original-title="Xem">
+              <i class="fa fa-eye"></i>
+            </a>
+          </div>
+          <div class="cart addtocart">
+
+            <form onsubmit="return false" method="post" enctype="multipart/form-data"
+                  class="form-ajaxtocart" id="product-actions-995766">
+              <input type="hidden" name="id" value="8697313">
+              <input type="hidden" name="variantId" value="8697313">
+              <button class="btn btn-outline-inverse ajax_addtocart" type="button"
+                      value="Submit" (click)="addCart()" >
+                <i class="fa fa-shopping-cart"></i>
+                <span>Mua ngay</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

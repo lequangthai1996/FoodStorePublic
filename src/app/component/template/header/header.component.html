@@ -19,7 +19,7 @@
                                 <li class="">
                                     <a data-currency="USD" class="" href="javascript:void(0);" rel="nofollow">
                                         <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/currencies_img_1.png?1502267854590"
-                                             alt="USD">
+                                            alt="USD">
                                         USD
                                     </a>
                                 </li>
@@ -28,7 +28,7 @@
                                 <li class="">
                                     <a data-currency="EUR" class="" href="javascript:void(0);" rel="nofollow">
                                         <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/currencies_img_2.png?1502267854590"
-                                             alt="EUR">
+                                            alt="EUR">
                                         EUR
                                     </a>
                                 </li>
@@ -37,14 +37,14 @@
                                 <li class="">
                                     <a data-currency="AUD" class="" href="javascript:void(0);" rel="nofollow">
                                         <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/currencies_img_3.png?1502267854590"
-                                             alt="AUD">
+                                            alt="AUD">
                                         AUD
                                     </a>
                                 </li>
                                 <li class="">
                                     <a data-currency="GBP" class="" href="javascript:void(0);" rel="nofollow">
                                         <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/currencies_img_4.png?1502267854590"
-                                             alt="GBP">
+                                            alt="GBP">
                                         GBP
                                     </a>
                                 </li>
@@ -53,7 +53,7 @@
                                 <li class="">
                                     <a data-currency="JPY" class="" href="javascript:void(0);" rel="nofollow">
                                         <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/currencies_img_5.png?1502267854590"
-                                             alt="JPY">
+                                            alt="JPY">
                                         JPY
                                     </a>
                                 </li>
@@ -66,8 +66,8 @@
                         <div class="header_user_info e-scale 1">
                             <ul class="links">
 
-                                <li><a class="account" rel="nofollow" href="/account"
-                                       title="Tài khoản của tôi"><span>Vũ Đặng Ngọc</span></a></li>
+                                <li><a class="account" rel="nofollow" href="/account" title="Tài khoản của tôi"><span>Vũ
+                                            Đặng Ngọc</span></a></li>
                                 <li><a id="customer_logout_link" href="/account/logout" title="Đăng xuất">Đăng xuất</a>
                                 </li>
 
@@ -88,69 +88,7 @@
                                     <i class="button-search fa fa-search"></i>
                                 </div>
                                 <div class="dropdown-menu-search">
-                                    <form class="input-group searchbox search-box">
-                                        <input type="hidden" name="type" value="product">
-                                        <div class="filter_type category_filter input-group-addon group-addon-select icon-select">
-                                            <select name="category_id" class="no-border">
-                                                <option value="0">Tất cả danh mục</option>
 
-                                                <option value="/bst" href="/bst">
-                                                    BST
-                                                </option>
-
-                                                <option value="/toan-chieu-rong" href="/toan-chieu-rong">
-                                                    Toàn chiều rộng
-                                                </option>
-
-                                                <option value="/dang-danh-sach-cot-phai"
-                                                        href="/dang-danh-sach-cot-phai">
-                                                    Dạng danh sách, cột phải
-                                                </option>
-
-                                                <option value="/dang-danh-sach-cot-trai"
-                                                        href="/dang-danh-sach-cot-trai">
-                                                    Dạng danh sách, cột trái
-                                                </option>
-
-                                                <option value="/dang-luoi-cot-phai" href="/dang-luoi-cot-phai">
-                                                    Dạng lưới, cột phải
-                                                </option>
-
-                                                <option value="/dang-luoi-cot-trai" href="/dang-luoi-cot-trai">
-                                                    Dạng lưới, cột trái
-                                                </option>
-
-                                                <option value="/khac" href="/khac">
-                                                    Khác
-                                                </option>
-
-                                                <option value="/ban-chay-nhat" href="/ban-chay-nhat">
-                                                    Bán chạy nhất
-                                                </option>
-
-                                                <option value="/do-an-nhanh" href="/do-an-nhanh">
-                                                    Đồ ăn nhanh
-                                                </option>
-
-                                                <option value="/collections-san-pham-moi"
-                                                        href="/collections-san-pham-moi">
-                                                    Sản phẩm mới
-                                                </option>
-
-                                            </select>
-                                        </div>
-                                        <div class="search-input-wrapper clearfix input-group">
-                                            <input class="search_query_top form-control input-lg input-search" size="35"
-                                                   type="search"
-                                                   name="query" placeholder="Tìm kiếm ..." aria-label="Tìm kiếm ..."
-                                                    [(ngModel)]="inputSearch">
-                                            <span class="input-group-addon input-group-search">
-            <button class="search_button" type="submit">
-              Tìm kiếm
-            </button>
-            </span>
-                                        </div>
-                                    </form>
 
                                 </div>
                             </div>
@@ -166,14 +104,15 @@
                         <div class="header_user_info e-scale 1">
                             <ul class="links">
                                 <li *ngIf="user.currentUser == null"><a id="customer_login_link"
-                                                                        [routerLink]="['/login']" title="Đăng nhập">Đăng
-                                    nhập</a></li>
+                                        [routerLink]="['/login']" title="Đăng nhập">Đăng
+                                        nhập</a></li>
                                 <li *ngIf="user.currentUser != null"><a (click)="logout()" title="Đăng xuất">Đăng
-                                    xuât</a></li>
+                                        xuât</a></li>
                                 <li *ngIf="user.currentUser != null"><a [routerLink]="['/profile']" title="Cá nhân">Xin
-                                    chào {{user.currentUser.username}}</a></li>
-                                <li *ngIf="user.currentUser == null"><a [routerLink]="['/register']" title="Đăng ký">Đăng
-                                    ký</a></li>
+                                        chào {{user.currentUser.username}}</a></li>
+                                <li *ngIf="user.currentUser == null"><a [routerLink]="['/register']"
+                                        title="Đăng ký">Đăng
+                                        ký</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -191,8 +130,7 @@
 
                             <a href="/" itemprop="url">
                                 <img src="//bizweb.dktcdn.net/100/038/419/themes/49902/assets/logo.png?1502267854590"
-                                     alt="leo-food"
-                                     itemprop="logo">
+                                    alt="leo-food" itemprop="logo">
                             </a>
 
 
@@ -218,8 +156,7 @@
 
                                             <li class="parent dropdown full-width ">
                                                 <a class="dropdown-toggle has-category" data-toggle="dropdown"
-                                                   href="/collections"
-                                                   title="Bộ sưu tập" target="_self">
+                                                    href="/collections" title="Bộ sưu tập" target="_self">
                                                     <span class="menu-title">Bộ sưu tập</span><b class="caret"></b>
                                                 </a>
 
@@ -241,28 +178,28 @@
 
 
                                                                                     <li><a href="/dang-luoi-cot-trai"
-                                                                                           title="Dạng lưới, cột trái">Dạng
-                                                                                        lưới, cột
-                                                                                        trái</a></li>
+                                                                                            title="Dạng lưới, cột trái">Dạng
+                                                                                            lưới, cột
+                                                                                            trái</a></li>
 
                                                                                     <li><a href="/dang-luoi-cot-phai"
-                                                                                           title="Dạng lưới, cột phải">Dạng
-                                                                                        lưới, cột
-                                                                                        phải</a></li>
+                                                                                            title="Dạng lưới, cột phải">Dạng
+                                                                                            lưới, cột
+                                                                                            phải</a></li>
 
                                                                                     <li>
                                                                                         <a href="/dang-danh-sach-cot-trai"
-                                                                                           title="Dạng danh sách, cột trái">Dạng
+                                                                                            title="Dạng danh sách, cột trái">Dạng
                                                                                             danh sách, cột trái</a></li>
 
                                                                                     <li>
                                                                                         <a href="/dang-danh-sach-cot-phai"
-                                                                                           title="Dạng danh sách, cột phải">Dạng
+                                                                                            title="Dạng danh sách, cột phải">Dạng
                                                                                             danh sách, cột phải</a></li>
 
                                                                                     <li><a href="/toan-chieu-rong"
-                                                                                           title="Toàn chiều rộng">Toàn
-                                                                                        chiều rộng</a>
+                                                                                            title="Toàn chiều rộng">Toàn
+                                                                                            chiều rộng</a>
                                                                                     </li>
 
 
@@ -281,9 +218,8 @@
                                                                 <div class="block-video">
                                                                     <div class="widget-inner">
                                                                         <iframe width="100%" height="200"
-                                                                                src="https://www.youtube.com/embed/c9cDCaY9lzY"
-                                                                                frameborder="0"
-                                                                                allowfullscreen=""></iframe>
+                                                                            src="https://www.youtube.com/embed/c9cDCaY9lzY"
+                                                                            frameborder="0" allowfullscreen=""></iframe>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -305,35 +241,39 @@
                                                                             <div class="product-meta">
                                                                                 <h5 class="name">
                                                                                     <a class="product-name"
-                                                                                       href="/com-ga" title="Cơm gà">
+                                                                                        href="/com-ga" title="Cơm gà">
                                                                                         Cơm gà
                                                                                     </a>
                                                                                 </h5>
                                                                                 <div class="product-desc">
-                                                                                    <p style="color: rgb(0, 0, 0); font-family: Arial, Verdana, sans-serif; font-size: 14px; line-height: normal;">
+                                                                                    <p
+                                                                                        style="color: rgb(0, 0, 0); font-family: Arial, Verdana, sans-serif; font-size: 14px; line-height: normal;">
                                                                                         <br>
                                                                                         Trong ẩm thực Việt, có lẽ
                                                                                         chẳng...
-                                                                                    </p></div>
+                                                                                    </p>
+                                                                                </div>
                                                                                 <div class="content_price price">
 
-						<span class="price product-price sale-price">
-							<span>40.000₫</span>
-						</span>
+                                                                                    <span
+                                                                                        class="price product-price sale-price">
+                                                                                        <span>40.000₫</span>
+                                                                                    </span>
 
-                                                                                    <span class="old-price product-price">
-								<span>70.000₫</span>
-							</span>
+                                                                                    <span
+                                                                                        class="old-price product-price">
+                                                                                        <span>70.000₫</span>
+                                                                                    </span>
 
 
                                                                                 </div>
                                                                             </div>
                                                                             <div class="image ">
                                                                                 <a class="product_img_link"
-                                                                                   href="/com-ga" title="Cơm gà">
+                                                                                    href="/com-ga" title="Cơm gà">
                                                                                     <img class="replace-2x img-responsive"
-                                                                                         src="//bizweb.dktcdn.net/100/038/419/products/4556114201404-fix.jpg?v=1475284834753"
-                                                                                         alt="Cơm gà">
+                                                                                        src="//bizweb.dktcdn.net/100/038/419/products/4556114201404-fix.jpg?v=1475284834753"
+                                                                                        alt="Cơm gà">
                                                                                 </a>
                                                                             </div>
 
@@ -344,17 +284,19 @@
                                                                             <div class="product-meta">
                                                                                 <h5 class="name">
                                                                                     <a class="product-name"
-                                                                                       href="/com-van-phong"
-                                                                                       title="Cơm văn phòng">
+                                                                                        href="/com-van-phong"
+                                                                                        title="Cơm văn phòng">
                                                                                         Cơm văn phòng
                                                                                     </a>
                                                                                 </h5>
                                                                                 <div class="product-desc">
-                                                                                    <p style="color: rgb(0, 0, 0); font-family: Arial, Verdana, sans-serif; font-size: 14px; line-height: normal;">
+                                                                                    <p
+                                                                                        style="color: rgb(0, 0, 0); font-family: Arial, Verdana, sans-serif; font-size: 14px; line-height: normal;">
                                                                                         <br>
                                                                                         Món ăn đơn giản với chiếc
                                                                                         bánh...
-                                                                                    </p></div>
+                                                                                    </p>
+                                                                                </div>
                                                                                 <div class="content_price price">
 
                                                                                     <p class="product-contact">Giá: Liên
@@ -364,11 +306,11 @@
                                                                             </div>
                                                                             <div class="image ">
                                                                                 <a class="product_img_link"
-                                                                                   href="/com-van-phong"
-                                                                                   title="Cơm văn phòng">
+                                                                                    href="/com-van-phong"
+                                                                                    title="Cơm văn phòng">
                                                                                     <img class="replace-2x img-responsive"
-                                                                                         src="//bizweb.dktcdn.net/100/038/419/products/552048541-fix.jpg?v=1475284907923"
-                                                                                         alt="Cơm văn phòng">
+                                                                                        src="//bizweb.dktcdn.net/100/038/419/products/552048541-fix.jpg?v=1475284907923"
+                                                                                        alt="Cơm văn phòng">
                                                                                 </a>
                                                                             </div>
 
@@ -387,8 +329,7 @@
 
                                             <li class="parent dropdown ">
                                                 <a class="dropdown-toggle has-category" data-toggle="dropdown"
-                                                   href="/collections/all"
-                                                   title="Sản phẩm" target="_self">
+                                                    href="/collections/all" title="Sản phẩm" target="_self">
                                                     <span class="">Sản phẩm</span><b class="caret"></b>
                                                 </a>
                                                 <div class="dropdown-menu level1">
@@ -399,7 +340,7 @@
 
                                                                 <li class="">
                                                                     <a class="" href="/sup-thap-cam"
-                                                                       title="Sản phẩm mới">
+                                                                        title="Sản phẩm mới">
                                                                         <span class="">Sản phẩm mới</span>
                                                                     </a>
                                                                 </li>
@@ -414,7 +355,7 @@
 
                                                                 <li class="">
                                                                     <a class="" href="/com-van-phong"
-                                                                       title="Sản phẩm khuyến mãi">
+                                                                        title="Sản phẩm khuyến mãi">
                                                                         <span class="">Sản phẩm khuyến mãi</span>
                                                                     </a>
                                                                 </li>
@@ -455,68 +396,30 @@
 
                                 <div class="nav-search visible">
 
-                                    <form class="input-group searchbox search-box" action="/search" method="get"
-                                          role="search">
+                                    <form class="input-group searchbox search-box" [formGroup]="searchForm"
+                                        role="search">
                                         <input type="hidden" name="type" value="product">
-                                        <div class="filter_type category_filter input-group-addon group-addon-select icon-select">
-                                            <select name="category_id" class="no-border">
+                                        <div
+                                            class="filter_type category_filter input-group-addon group-addon-select icon-select">
+                                            <select name="category_id" class="no-border" formControlName="category_id">
                                                 <option value="0">Tất cả danh mục</option>
 
-                                                <option value="/bst" href="/bst">
-                                                    BST
-                                                </option>
-
-                                                <option value="/toan-chieu-rong" href="/toan-chieu-rong">
-                                                    Toàn chiều rộng
-                                                </option>
-
-                                                <option value="/dang-danh-sach-cot-phai"
-                                                        href="/dang-danh-sach-cot-phai">
-                                                    Dạng danh sách, cột phải
-                                                </option>
-
-                                                <option value="/dang-danh-sach-cot-trai"
-                                                        href="/dang-danh-sach-cot-trai">
-                                                    Dạng danh sách, cột trái
-                                                </option>
-
-                                                <option value="/dang-luoi-cot-phai" href="/dang-luoi-cot-phai">
-                                                    Dạng lưới, cột phải
-                                                </option>
-
-                                                <option value="/dang-luoi-cot-trai" href="/dang-luoi-cot-trai">
-                                                    Dạng lưới, cột trái
-                                                </option>
-
-                                                <option value="/khac" href="/khac">
-                                                    Khác
-                                                </option>
-
-                                                <option value="/ban-chay-nhat" href="/ban-chay-nhat">
-                                                    Bán chạy nhất
-                                                </option>
-
-                                                <option value="/do-an-nhanh" href="/do-an-nhanh">
-                                                    Đồ ăn nhanh
-                                                </option>
-
-                                                <option value="/collections-san-pham-moi"
-                                                        href="/collections-san-pham-moi">
-                                                    Sản phẩm mới
+                                                <option *ngFor="let category of listCategories" [value]="category.id">
+                                                    {{category.name}}
                                                 </option>
 
                                             </select>
                                         </div>
                                         <div class="search-input-wrapper clearfix input-group">
                                             <input class="search_query_top form-control input-lg input-search" size="35"
-                                                   type="search"
-                                                   name="query" value="" placeholder="Tìm kiếm ..."
-                                                   aria-label="Tìm kiếm ..." [(ngModel)]="inputSearch">
+                                                type="search" name="query" value="" placeholder="Tìm kiếm ..."
+                                                aria-label="Tìm kiếm ..." formControlName="key_search">
                                             <span class="input-group-addon input-group-search">
-            <button class="search_button" type="submit" (click)="search(inputSearch)">
-              Tìm kiếm
-            </button>
-            </span>
+                                                <button class="search_button" type="submit"
+                                                    (click)="search(inputSearch)">
+                                                    Tìm kiếm
+                                                </button>
+                                            </span>
                                         </div>
                                     </form>
 
@@ -548,7 +451,7 @@
                         <div class="navbar-header">
 
                             <button type="button" class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas"
-                                    data-target="#off-canvas-nav">
+                                data-target="#off-canvas-nav">
                                 <span class="fa fa-bars"></span>
                                 <span class="menu-only">Menu</span>
                             </button>

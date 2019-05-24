@@ -4,20 +4,20 @@
           <h3 class="name">
             <a class="product-name"
                [routerLink]="['/detail',product.id]"
-               title="{{product.name}}">{{product.name}}</a>
+               title="{{product.description}}">{{product.description}}</a>
           </h3>
           <div class="review clearfix">
             <span class="shopify-product-reviews-badge" data-id="995766"></span>
           </div>
-          <div class="content_price" *ngIf="product.promotions.length != 0">
+          <div class="content_price">
                           <span class="price product-price sale-price">
-                           <span>{{(product.price *(1 - product.promotions[0].percent/100)).toLocaleString('vi')}} ₫</span>
+                           <span>{{(product.price).toLocaleString('vi')}} ₫</span>
                          </span>
             <span class="old-price product-price">
                           <span>{{product.price.toLocaleString('vi')}} ₫</span>
                         </span>
           </div>
-          <div class="content_price" *ngIf="product.promotions.length == 0">
+          <div class="content_price">
                           <span class="price product-price sale-price">
                            <span>{{product.price.toLocaleString('vi')}} ₫</span>
                          </span>
@@ -34,7 +34,7 @@
                title="Pizza hải sản">
               <img class="replace-2x img-responsive"
                    src="{{product.avatar}}"
-                   alt="{{product.name}}"
+                   alt="{{product.description}}"
                    onerror="this.src='./assets/images/upload/noimage.gif'"
                    >
               <span class="product-additional" data-idproduct="995766">
@@ -45,7 +45,7 @@
 	</span>
             </a>
           </div>
-          <span *ngIf="product.promotions.length != 0" class="product-label sale-box">
+          <span >
               <span class="label-sale">Sale</span>
             </span>
           <div class="right">

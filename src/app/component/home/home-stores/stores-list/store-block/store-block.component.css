@@ -1,0 +1,95 @@
+.ajax_addtocart:hover span{
+  color: #fff;
+}
+.product_list.grid .row {
+  margin-left: 0;
+  margin-right: 0
+}
+.product_list.list .product_block {
+  border: 0px
+}
+.product_list .product_block {
+  border: none;
+}
+.product_list .product_block:last-child {
+  border-right: 0px
+}
+.product_list .product-items {
+  border-bottom: 1px solid #e5e5e5;
+  margin: 0;
+  padding: 0;
+  position: relative
+}
+.product_list .product-items>.product_block {
+  padding: 0
+}
+.product_list_owl .product_block {
+  border-bottom: 1px solid #e5e5e5
+}
+.product_list_owl .product_block:last-child {
+  border-bottom: 0
+}
+.product_list_owl .owl-wrapper>.active {
+  border-right: 1px solid #e5e5e5
+}
+.product_list_owl .owl-wrapper>.active.last {
+  border-right: 0
+}
+.product_list.list .product-block .deal-clock {
+  position: relative;
+  margin-top: 10px;
+  z-index: 1 !important;
+  bottom: 0px !important;
+  background-color: transparent
+}
+.product_list.list .product-block:hover .deal-clock {
+  opacity: 1;
+  filter: alpha(opacity=100)
+}
+.product_list.list .product_block:last-child .product-block {
+  border-bottom: none
+}
+.product_list.list .product-block {
+  border-bottom: 1px solid #e5e5e5
+}
+.product_list.list .product-block .product-meta {
+  padding: 0px;
+  text-align: left
+}
+.product_list.list .product-block .product-meta .name {
+  min-height: 20px
+}
+.product_list.list .product-block:hover .product-meta-inner {
+  top: 0
+}
+.product_list.list .product-block .product-desc {
+  display: block
+}
+.product_list.list .product-block .action {
+  padding: 0
+}
+.product_list.list .product-block .product-label {
+  top: 0
+}
+.product_list.list .review {
+  border-top: 0px
+}
+.product_list.list .review .spr-badge-caption {
+  display: none
+}
+.product_list.list .review .spr-badge {
+  padding: 0px 0px 5px
+}
+.product_list.list .ajax_addtocart span.select_options {
+  padding: 0px 10px
+}
+.product_list.list .wishlist {
+  margin-left: 3px;
+  margin-right: 3px
+}
+.product_list .product-block:nth-child(2n+1){
+  clear: left;
+}
+.clear_left {
+  clear: left;
+}

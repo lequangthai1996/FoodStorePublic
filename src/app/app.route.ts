@@ -37,6 +37,19 @@ const appRoutes: Routes = [
             breadcrumb: 'Danh mục'
         }
     },
+
+    {
+        path: 'stores/:id/category/:categoryid', children: [
+            {
+                path: '', component: CategoryComponent, data: {
+                    breadcrumb: 'Danh mục sản phẩm'
+                }
+            }
+        ],
+        data: {
+            breadcrumb: 'Danh mục'
+        }
+    },
   {
     path: 'register',
     component: RegisterComponent,
@@ -51,7 +64,14 @@ const appRoutes: Routes = [
         path: 'register',
         component: RegisterComponent
     },
-    {path: '', component: HomeComponent},
+    {
+        path: '', 
+        component: HomeComponent
+    },
+    {
+        path: 'store',
+        component: HomeComponent
+    },
     {
         path: 'detail',
         children: [
