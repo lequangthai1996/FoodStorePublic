@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../../service/category.service';
+import { CartService } from '../../../service/cart.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -8,11 +10,22 @@ import {CategoryService} from '../../../service/category.service';
 })
 export class ProductsListComponent implements OnInit {
   items: Array<any> = [];
-  constructor(private service: CategoryService) {
+  storeID: number;
+  private sub: any;
+  constructor(
+    private service: CategoryService,
+    private cartService: CartService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
   }
 
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.storeID = +params['id'];
+      this.cartService.setCartId(this.storeID);
+   });
   }
 
 }

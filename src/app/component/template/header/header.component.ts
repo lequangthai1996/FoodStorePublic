@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
     user: TokenService;
     cart: CartService;
+    cartId: number;
     inputSearch: any;
     searchForm: FormGroup;
     listCategories: Category[] = [];
@@ -43,6 +44,10 @@ export class HeaderComponent implements OnInit {
         })
 
         this.getListCatogory();
+
+        this.cartService.cartID.subscribe( cartID => {
+            this.cartId = cartID;
+        })
     }
     getListCatogory() {
         this.categoryService.getListCategory().subscribe(
