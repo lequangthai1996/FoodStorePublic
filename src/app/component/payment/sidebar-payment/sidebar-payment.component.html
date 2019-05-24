@@ -25,13 +25,10 @@
               </td>
               <td class="product-info">
                 <span class="product-info-name">
-                    {{ product.name }}
+                    {{ product.description }}
                 </span>
               </td>
-              <td  *ngIf="product.promotions.length != 0" class="product-price text-right">
-                {{ (product.price * (1 - product.promotions[0].percent/100)).toLocaleString('vi') }} ₫
-              </td>
-              <td  *ngIf="product.promotions.length == 0" class="product-price text-right">
+              <td class="product-price text-right">
                 {{ (product.price * product.quantityCart).toLocaleString('vi') }} ₫
               </td>
             </tr>

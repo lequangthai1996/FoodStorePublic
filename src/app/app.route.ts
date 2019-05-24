@@ -88,7 +88,7 @@ const appRoutes: Routes = [
       },
     },
     {
-        path: 'cart/:id',
+        path: 'cart',
         component: CartComponent,
         data: {
             title: 'Giỏ hàng',

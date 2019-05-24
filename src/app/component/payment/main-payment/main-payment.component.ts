@@ -41,9 +41,11 @@ export class MainPaymentComponent implements OnInit {
       }),
       note: new FormControl('')
     });
-    this.tokenService.getInfo();
+    //this.tokenService.getInfo();
   }
   order(items) {
+    console.log("haha");
+    console.log(items);
     if (!this.orderForm.valid) {
       swal('Thông báo!', 'Dữ liệu chưa hợp lệ! Mời bạn kiểm tra lại', 'error');
       return;
@@ -62,7 +64,8 @@ export class MainPaymentComponent implements OnInit {
         'userId': this.tokenService.currentUser.id,
         'promotionId': 1,
         'shipId': 1,
-        'orderItems': items
+        'orderItems': items,
+        'supplierId': 16
       };
     console.log(data);
       this.orderService.sendOrder(data).subscribe((a: any) => {
@@ -194,7 +197,7 @@ export class MainPaymentComponent implements OnInit {
         'transactionAt': payment.create_time.substring(0, payment.create_time.length - 1)
       };
       this.cartService.removeCart();
-      this.tokenService.postDataWithToken(url, body).subscribe(res => {
+      this.tokenService.postDataWithToken(url, body, ).subscribe(res => {
         swal('Thông báo', 'Đơn hàng đã đặt và thanh toán thành công!', 'success');
         this.router.navigate(['/history-orders']);
       });
@@ -210,7 +213,7 @@ export class MainPaymentComponent implements OnInit {
         personal: this.formBuilder.group({
           email: new FormControl(this.tokenService.currentUser !== null ? this.tokenService.currentUser.email : '',
               [Validators.required, Validators.email]),
-          name: new FormControl(this.tokenService.currentUser !== null ? this.tokenService.currentUser.fullName : '',
+          name: new FormControl(this.tokenService.currentUser !== null ? this.tokenService.currentUser.full_name : '',
               [Validators.required]),
           phone: new FormControl(this.tokenService.currentUser !== null ? this.tokenService.currentUser.phone : '',
               [Validators.required, Validators.pattern('[0-9]*')]),
