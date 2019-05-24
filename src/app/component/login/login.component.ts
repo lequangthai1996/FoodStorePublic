@@ -54,8 +54,10 @@ export class LoginComponent implements OnInit {
       console.log(options);
       this.http.post(url, data, options).map(res => res.json()).subscribe((result: any) => {
         if(result['token']!= null) {
+          console.log("Token nhe");
+          console.log(result);
           this.tokenService.setToken(result['token']);
-          this.service.loginToken(result['token']);
+          this.service.loginToken(result['user']);
           swal('Thông báo', 'Đăng nhập thành công!', 'success');
         }else {
           swal('Thông báo', 'Đăng nhập thất bại!', 'error');

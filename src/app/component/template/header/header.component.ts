@@ -71,7 +71,9 @@ export class HeaderComponent implements OnInit {
     }
 
     login(data) {
-        this.tokenService.getInfo();
+        this.user.currentUser = data;
+        alert("cmnr")
+        //this.tokenService.getInfo();
     }
 
     logout() {
