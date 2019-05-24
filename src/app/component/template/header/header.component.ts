@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
     }
 
     onSubmit() {
-        this.storeService.searchStores(this.searchForm.value , 1, 12).subscribe(
+        this.storeService.searchStores(this.searchForm.value , 1).subscribe(
             result => {
                 console.log(result);
                 this.storeService.listStores$.next(result);

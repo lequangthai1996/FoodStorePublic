@@ -22,6 +22,7 @@ export class TokenService {
     this.currentUser = null;
     this.getInfo();
   }
+
   /** Get information basic of user */
   getInfo() {
     if (this.getToken() == null) {
@@ -35,6 +36,7 @@ export class TokenService {
     options = new RequestOptions({
       headers: headers
     });
+    alert("token service");
     this.http.get(environment.hostname + '/user/getUserDetail', options).map(res => res.json()).subscribe((data: any) => {
      this.currentUser = data;
      console.log(data);

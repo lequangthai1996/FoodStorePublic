@@ -6,6 +6,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import {ProductsListComponent} from './products-list/products-list.component';
 import {environment} from '../../../environments/environment';
 import {CategoryHeaderComponent} from './category-header/category-header.component';
+import { ItemService } from '../../service/item.service';
 
 @Component({
   selector: 'app-category',
@@ -19,18 +20,19 @@ export class CategoryComponent implements OnInit, OnDestroy {
   @ViewChild(CategoryHeaderComponent) cateHeader: CategoryHeaderComponent;
   page: number;
   id: number;
-  sort: string;
+  categoryID: number;
   private sub: any;
   private sub2: any;
+  pages: any;
   constructor(private paginationService: PaginationService,
               private http: Http,
               private route: ActivatedRoute,
               private router: Router,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private itemService: ItemService) {
     this.viewQuick = 'none';
     this.id = 0;
     this.page = 0;
-    this.sort = '';
   }
 
   ngOnInit() {
@@ -40,48 +42,47 @@ export class CategoryComponent implements OnInit, OnDestroy {
       if (!this.page) {
         this.page = 1;
       }
-      this.sort = params['sort'];
-      if (!this.sort) {
-        this.sort = '';
-      }
+
+
+
       this.sub2 = this.route.params.subscribe(params2 => {
         this.id = +params2['id'];
         if (!this.id) {
           this.id = 0;
         }
-        this.getList(this.id, this.page);
+        this.categoryID = +params['categoryid'];
+        if(!this.categoryID) {
+          this.categoryID = 2;
+        }
+        
       });
+      this.getListProducts(this.id, this.categoryID, this.page);
+
     });
   }
-  getList (id, page) {
-    if (id === 0) {
-      this.http.get(environment.hostname + '/item/all?page=' + (this.page - 1)
-          + '&size=12').map(res => res.json()).subscribe((data: any) => {
-        console.log(data);
-        this.productListComponent.items = data.content;
-        this.paginationService.init(data);
-      }, (err: any) => {
+  getListProducts (storeId: number, categoryID: number, page: number) {
 
-      });
-    } else {
-      this.http.get(environment.hostname + '/category/items/' + this.id +
-          '?page=' + (this.page - 1) + '&size=12&sort=' + this.sort).map(res => res.json()).subscribe((data: any) => {
-        console.log(data);
-        this.productListComponent.items = data.content;
-        this.paginationService.init(data);
-      }, (err: any) => {
+    this.itemService.getItemByStoreIdAndCategory(storeId,  categoryID, page).subscribe(
+      result => {
+        if(result['success'] === true) {
+          this.productListComponent.items = result['data'];
 
-      });
-    }
+          console.log(JSON.stringify(this.productListComponent.items));
+
+          let totalPages:number = result['totalPages'];
+          console.log( result['totalPages'])
+
+          let pages = {"totalPages": totalPages, "number": page-1};
+          this.paginationService.init(pages);
+        }
+      }
+    )
+  
+
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
     this.sub2.unsubscribe();
   }
-  openViewQuick() {
-    this.viewQuick = 'block';
-  }
-  closeViewQuick() {
-    this.viewQuick = 'done';
-  }
+
 }

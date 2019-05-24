@@ -37,9 +37,9 @@ export class HomeStoresComponent implements OnInit {
       this.getList(this.page);
     });
 
-    this.storeService.listStores$.subscribe(v => {
-      console.log(v);
-    });
+    // this.storeService.listStores$.subscribe(v => {
+    //   console.log(v);
+    // });
   }
   getList (page: number) {
     var formSearch = {

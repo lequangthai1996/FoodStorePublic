@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private _location: Location) {
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
   }
@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
   }
   save(model: any) {
     console.log(model);
-    const url = environment.hostname + '/auth';
+    const url = environment.hostname + '/auth/login';
     let data;
     data = {
-      'username': model.email,
+      'username': model.username,
       'password': model.password,
     };
     let headers;
@@ -52,16 +52,19 @@ export class LoginComponent implements OnInit {
      let options;
     options = new RequestOptions({headers: headers});
       console.log(options);
-      this.http.post(url, data, options).map(res => res.json()).subscribe((a: any) => {
-      console.log(a);
-      this.tokenService.setToken(a);
-      this.service.loginToken(a);
-      swal('Thông báo', 'Đăng nhập thành công!', 'success');
+      this.http.post(url, data, options).map(res => res.json()).subscribe((result: any) => {
+        if(result['token']!= null) {
+          this.tokenService.setToken(result['token']);
+          this.service.loginToken(result['token']);
+          swal('Thông báo', 'Đăng nhập thành công!', 'success');
+        }else {
+          swal('Thông báo', 'Đăng nhập thất bại!', 'error');
+        }
       // this.router.navigate(['/home');
         this._location.back();
     }, (err: any) => {
       if (err.status === 401) {
-        swal('Thông báo', 'Email hoặc mật khẩu không tồn tại!', 'error');
+        swal('Thông báo', 'Username hoặc mật khẩu không tồn tại!', 'error');
       } else {
         swal('Thông báo', 'Đăng nhập thất bại!', 'error');
       }

@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             alert('You have to login!');
             this.router.navigate(['login']);
         } else {
+            alert("Profile ");
             this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getUserDetail').subscribe(data => {
                 this.avatar = data.avatar;
             });
