@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   hostname: 'http://localhost:9000',
-  client_id_sandbox: 'AeohdSUtizy_lob7UY7dHGGdlkvDMhInvGlXRDormq15d4-FZUXz7bhf3Pba1J1sRh_gtxutYZ_34fJY'
+  client_id_sandbox: 'AcA4SiZQLVBWpm7jXaUkwBmUDCKpU8QhPN6_WBj-bVqH-mezcWhH2VTH_SASb698ZThx5qMD976F_e3P'
 };
