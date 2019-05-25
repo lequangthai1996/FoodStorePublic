@@ -7,13 +7,18 @@ import {TokenService} from './token.service';
 
 @Injectable()
 export class CartService implements OnDestroy {
+  public cartID = new Subject<any>();
   public login = new Subject<any>();
   carts: any;
   constructor(private http: Http, private tokenService: TokenService) {
     let carts;
     carts = localStorage.getItem('cart');
     this.carts = carts !== null ? JSON.parse(carts) : [];
-    this.updateCart();
+    //this.updateCart();
+  }
+
+  setCartId(id: number) {
+    this.cartID.next(id);
   }
   getCarts() {
     localStorage.getItem('carts');
@@ -70,6 +75,7 @@ export class CartService implements OnDestroy {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
+    alert("update cart");
     this.http.post(environment.hostname + '/item/getCart', itemIds,
         { headers: headers })
         .map(res => res.json())

@@ -10,17 +10,15 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 export class TokenService {
   static TOKEN_KEY = 'AccessToken';
   static TOKEN_EXPIRES = 'Expires';
+  static SUPPLIER_ID = "Supplier_id";
   currentUser: any;
   headers: any;
   public login = new Subject<any>();
   constructor(private http: Http,
               private shareService: ShareService) {
-    this.headers = new Headers();
-    this.headers.append('Authorization', this.getToken());
-    this.headers.append('Accept', 'application/json');
-    this.headers.append('Content-type', 'application/json');
-    this.currentUser = null;
-    this.getInfo();
+                    
+    //this.currentUser = null;
+   // this.getInfo();
   }
 
   /** Get information basic of user */
@@ -62,10 +60,9 @@ export class TokenService {
       headers: this.headers
     }).map(res => res.json());
   }
-  postDataWithToken(url, data) {
-    return this.http.post(url, data, {
-      headers: this.headers
-    }).map(res => res.json());
+  postDataWithToken(url, data, options?) {
+
+    return this.http.post(url, data, options).map(res => res.json());
   }
   putDataWithToken(url, data) {
     return this.http.put(url, data, {
@@ -126,7 +123,18 @@ export class TokenService {
     }).map(res => res.json());
   }
   setToken(token) {
-    Cookie.set(TokenService.TOKEN_KEY, token.token, token.expire / 3600);
+    Cookie.set(TokenService.TOKEN_KEY, token /*, token.expire / 3600*/);
+  }
+
+  setSupplierID(Supplier_id) {
+    Cookie.set(TokenService.SUPPLIER_ID, Supplier_id);
+  }
+
+  getSupplierID() {
+    return Cookie.get(TokenService.SUPPLIER_ID);
+  }
+  updateSupplierID(Supplier_id) {
+    Cookie.delete(TokenService.SUPPLIER_ID);
   }
   removeToken() {
     Cookie.delete(TokenService.TOKEN_KEY);

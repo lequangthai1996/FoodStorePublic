@@ -6,6 +6,7 @@ import {PaginationService} from '../../../service/pagination.service';
 import {Http} from '@angular/http';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import { StoreService } from '../../../service/store.service';
+import { CartService } from '../../../service/cart.service';
 @Component({
   selector: 'app-home-stores',
   templateUrl: './home-stores.component.html',
@@ -29,6 +30,7 @@ export class HomeStoresComponent implements OnInit {
    }
 
   ngOnInit() {
+
     this.sub = this.route.queryParams.subscribe(params => {
       this.page = +params['page'];
       if (!this.page) {
