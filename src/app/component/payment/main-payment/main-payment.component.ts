@@ -180,24 +180,27 @@ export class MainPaymentComponent implements OnInit {
       'userId': this.tokenService.currentUser.id,
       'promotionId': 1,
       'shipId': 1,
-      'orderItems': items
+      'orderItems': items,
+      'supplierId': 16
     };
     console.log(data);
     this.orderService.sendOrder(data).subscribe((a: any) => {
+      console.log("order detail");
       console.log(a);
       let url, body ;
       url = environment.hostname + '/payments/create';
       body = {
         'order': {
-          'id': a.id
+          'id': a.data.id
         },
         'transactionId': payment.id,
         'transactionAmount': payment.transactions[0].amount.total,
         'payerEmail': payment.payer.payer_info.email,
         'transactionAt': payment.create_time.substring(0, payment.create_time.length - 1)
       };
+      console.log("orderId" + body.order.id);
       this.cartService.removeCart();
-      this.tokenService.postDataWithToken(url, body, ).subscribe(res => {
+      this.tokenService.postDataWithToken(url, body).subscribe(res => {
         swal('Thông báo', 'Đơn hàng đã đặt và thanh toán thành công!', 'success');
         this.router.navigate(['/history-orders']);
       });
