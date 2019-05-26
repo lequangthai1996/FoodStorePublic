@@ -11,12 +11,12 @@ export class MoreInfoBlockComponent implements OnInit {
 
     id: number;
     sub: any;
-    description: string;
+    name: string;
     ngOnInit(): void {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
             this.itemService.getItemById(this.id).subscribe((data: any) => {
-                this.description = data.description;
+                this.name = data.name;
             });
         });
     }

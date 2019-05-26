@@ -4,7 +4,7 @@
           <h3 class="name">
             <a class="product-name"
                [routerLink]="['/detail',product.id]"
-               title="{{product.description}}">{{product.description}}</a>
+               title="{{product.name}}">{{product.name}}</a>
           </h3>
           <div class="review clearfix">
             <span class="shopify-product-reviews-badge" data-id="995766"></span>
@@ -34,7 +34,7 @@
                title="Pizza hải sản">
               <img class="replace-2x img-responsive"
                    src="{{product.avatar}}"
-                   alt="{{product.description}}"
+                   alt="{{product.name}}"
                    onerror="this.src='./assets/images/upload/noimage.gif'"
                    >
               <span class="product-additional" data-idproduct="995766">

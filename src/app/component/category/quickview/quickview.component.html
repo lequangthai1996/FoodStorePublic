@@ -25,7 +25,7 @@
             <span class="shopify-product-reviews-badge" data-id=""></span>
           </div>
 
-          <div class="product-description rte" style="font-size: 10pt" [innerHTML]="product.description.substring(product.description.indexOf('</h3>'), product.description.indexOf('</h3>') + 250)"></div>
+          <div class="product-description rte" style="font-size: 10pt" [innerHTML]="product.name.substring(product.name.indexOf('</h3>'), product.name.indexOf('</h3>') + 250)"></div>
           <h5 class="brand"><span>Nhà sản xuất: </span>{{product.supplier}}</h5>
           <div class="product-sku">
             <p>Mã sản phẩm: <span>{{product.id}}</span></p></div>
