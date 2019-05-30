@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../../../../service/store.service';
 
 @Component({
   selector: 'app-stores-list',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoresListComponent implements OnInit {
   items: Array<any> = [];
-  constructor() { }
+  constructor(
+    private storeService: StoreService
+  ) { }
 
   ngOnInit() {
+    this.storeService.listStores.subscribe(result => {
+      this.items = result;
+    })
   }
 
 }

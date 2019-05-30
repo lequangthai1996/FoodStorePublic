@@ -1,7 +1,7 @@
 import { Injectable, Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment'
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import {Store} from '../models/store.model'
 
 const httpOptions = {
@@ -13,7 +13,9 @@ const httpOptions = {
 @Injectable()
 export class StoreService {
 
-  listStores$: Subject<Store>;
+  //listStores$: Subject<Store>;
+
+  public listStores = new Subject<any>();
   // listStores: Store[] = [];
   
   constructor(

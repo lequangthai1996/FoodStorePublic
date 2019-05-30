@@ -6,7 +6,7 @@ import { Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./store-block.component.css']
 })
 export class StoreBlockComponent implements OnInit {
-  @Input() product: any;
+  @Input() store: any;
   @Input() index: any;
   @Input() size: any;
   @Input() class: any;

@@ -45,14 +45,13 @@ export class HomeStoresComponent implements OnInit {
   }
   getList (page: number) {
     var formSearch = {
-      "categories": [],
+      "categories": 0,
       "key_search": ""
     }
     this.storeService.searchStores(formSearch, page).subscribe(
       result => {
         if(result['success'] === true) {
           this.storesListComponent.items = result['data'];
-          console.log("xxxx\n" + JSON.stringify(result));
           let totalPages:number = result['totalPages'];
           console.log( result['totalPages'])
 

@@ -52,7 +52,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
         }
         this.categoryID = +params['categoryid'];
         if(!this.categoryID) {
-          this.categoryID = 2;
+          this.categoryID = 0;
         }
         
       });

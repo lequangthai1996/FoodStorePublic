@@ -65,8 +65,9 @@ const appRoutes: Routes = [
         component: RegisterComponent
     },
     {
-        path: '', 
-        component: HomeComponent
+        path: '',
+        redirectTo: 'store',
+        pathMatch: 'full'
     },
     {
         path: 'store',

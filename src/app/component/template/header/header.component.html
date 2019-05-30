@@ -396,12 +396,12 @@
 
                                 <div class="nav-search visible">
 
-                                    <form class="input-group searchbox search-box" [formGroup]="searchForm"
+                                    <form  (ngSubmit)="onSubmit()" class="input-group searchbox search-box" [formGroup]="searchForm"
                                         role="search">
                                         <input type="hidden" name="type" value="product">
                                         <div
                                             class="filter_type category_filter input-group-addon group-addon-select icon-select">
-                                            <select name="category_id" class="no-border" formControlName="category_id">
+                                            <select name="category_id" class="no-border" formControlName="categories">
                                                 <option value="0">Tất cả danh mục</option>
 
                                                 <option *ngFor="let category of listCategories" [value]="category.id">
@@ -415,8 +415,7 @@
                                                 type="search" name="query" value="" placeholder="Tìm kiếm ..."
                                                 aria-label="Tìm kiếm ..." formControlName="key_search">
                                             <span class="input-group-addon input-group-search">
-                                                <button class="search_button" type="submit"
-                                                    (click)="search(inputSearch)">
+                                                <button class="search_button" type="submit" >
                                                     Tìm kiếm
                                                 </button>
                                             </span>

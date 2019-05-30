@@ -5,7 +5,7 @@
       <a [routerLink]="['/detail',product.id]"
          class="cart__image">
         <img width="75" height="75" alt=""
-             alt="{{ product.description }}"
+             alt="{{ product.name }}"
              src="{{ product.avatar }}"
         >
       </a>
@@ -15,7 +15,7 @@
     <div class="cpro_item_inner">
       <span class="visible-xs">Tên: </span>
       <a [routerLink]="['/detail',product.id]" class="product_name">
-        {{ product.description }}
+        {{ product.name }}
       </a>
     </div>
   </div>

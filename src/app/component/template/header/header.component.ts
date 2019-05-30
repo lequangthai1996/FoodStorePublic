@@ -3,11 +3,13 @@ import {TokenService} from '../../../service/token.service';
 import {FormGroup, FormBuilder, Validator, FormControl, Validators} from '@angular/forms';
 import {Http} from '@angular/http';
 import swal from 'sweetalert2';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {CartService} from '../../../service/cart.service';
 import {CategoryService} from '../../../service/category.service';
 import {StoreService} from '../../../service/store.service';
 import { Category } from '../../../models/category.model';
+import { PaginationService } from '../../../service/pagination.service';
+
 
 @Component({
     selector: 'app-header',
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit {
     inputSearch: any;
     searchForm: FormGroup;
     listCategories: Category[] = [];
+    page: number;
 
 
     constructor(private http: Http,
@@ -31,6 +34,8 @@ export class HeaderComponent implements OnInit {
                 private categoryService: CategoryService,
                 private fb: FormBuilder,
                 private storeService: StoreService,
+                private route: ActivatedRoute,
+                private paginationService: PaginationService,
                 private router: Router) {
         this.user = this.tokenService;
         this.cart = this.cartService;
@@ -38,8 +43,15 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.route.queryParams.subscribe(params => {
+            this.page = +params['page'];
+            if(!this.page) {
+                this.page = 1;
+            }
+        })
         this.searchForm = this.fb.group({
-            category_id: [0],
+            categories: [0],
             key_search: ['']
         })
 
@@ -67,10 +79,17 @@ export class HeaderComponent implements OnInit {
     }
 
     onSubmit() {
-        this.storeService.searchStores(this.searchForm.value , 1).subscribe(
+        console.log("form search");
+        console.log(this.searchForm.value);
+        this.storeService.searchStores(this.searchForm.value , this.page).subscribe(
             result => {
-                console.log(result);
-                this.storeService.listStores$.next(result);
+                if(result['success']===true) {
+                    this.storeService.listStores.next(result['data']);
+
+                    let totalPages:number = result['totalPages'];
+                    let pages = {"totalPages": totalPages, "number": this.page-1}
+                    this.paginationService.init(pages);
+                }
             }
         )
     }
