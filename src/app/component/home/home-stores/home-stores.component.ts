@@ -16,6 +16,7 @@ export class HomeStoresComponent implements OnInit {
 
   @ViewChild(StoresListComponent) storesListComponent: StoresListComponent;
   page: number;
+  categoryID: number;
   private sub: any;
   private sub2: any;
   constructor(
@@ -31,21 +32,28 @@ export class HomeStoresComponent implements OnInit {
 
   ngOnInit() {
 
+    this.route.params.subscribe(params => {
+      this.categoryID = +params['categoryid'];
+      alert("cvdfddfd");
+      if(!this.categoryID) {
+        this.categoryID = 0;
+      }
+    })
     this.sub = this.route.queryParams.subscribe(params => {
       this.page = +params['page'];
       if (!this.page) {
         this.page = 1;
       }
-      this.getList(this.page);
+      this.getList(this.page, this.categoryID);
     });
 
     // this.storeService.listStores$.subscribe(v => {
     //   console.log(v);
     // });
   }
-  getList (page: number) {
+  getList (page: number, categoryID: number) {
     var formSearch = {
-      "categories": 0,
+      "categories": categoryID,
       "key_search": ""
     }
     this.storeService.searchStores(formSearch, page).subscribe(

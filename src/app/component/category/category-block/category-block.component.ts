@@ -16,7 +16,8 @@ export class CategoryBlockComponent implements OnInit {
   categoryActive: any;
   subCategoryCurrent: any;
   toggle: true;
-  id: number;
+  storeID: number;
+  categoryID: number;
   private sub: any;
   constructor(private categorySevice: CategoryService,
               private paginationService: PaginationService,
@@ -30,20 +31,21 @@ export class CategoryBlockComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categorySevice.getListCategory().subscribe((data: any) => {
-      this.categories = data;
-      this.sub = this.route.params.subscribe(params2 => {
-        this.id = +params2['id'];
-        if (!this.id) {
-          this.id = 0;
-          this.titleService.setTitle('Tất cả sản phẩm');
-        }
-      });
+    this.sub = this.route.params.subscribe(params2 => {
+      this.storeID = +params2['id'];
+      this.categoryID = +params2['categoryid'];
+      if (!this.categoryID || this.categoryID===0) {
+        this.categoryID = 0;
+        this.titleService.setTitle('Tất cả sản phẩm');
+      }
+    });
+    this.categorySevice.getListCategoryOfSpecifyStore(this.storeID).subscribe((result: any) => {
+      this.categories = result['data'];
+
       this.route.data.subscribe((v: any) => {
-        this.categoryActive = this.categories.find((obj) => obj.id === this.id);
+        this.categoryActive = this.categories.find((obj) => obj.id === this.categoryID);
         if (this.categoryActive === undefined) {
-          this.categorySevice.getDetail(this.id).subscribe((c: any) => {
-            this.loadSubCategory(c.parentId);
+          this.categorySevice.getDetail(this.categoryID).subscribe((c: any) => {
             this.categoryActive = c;
             this.titleService.setTitle(this.categoryActive.name);
             v.breadcrumb = this.categoryActive.name;
@@ -57,6 +59,7 @@ export class CategoryBlockComponent implements OnInit {
       });
     });
   }
+  
   toggleMenu(id) {
     if (this.subCategoryCurrent.length !== 0) {
       this.subCategoryCurrent = [];

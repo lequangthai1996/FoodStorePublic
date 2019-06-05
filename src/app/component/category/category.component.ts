@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output, ViewChild, OnChanges} from '@angular/core';
 import {CategoryService} from '../../service/category.service';
 import {PaginationService} from '../../service/pagination.service';
 import {Http} from '@angular/http';
@@ -14,7 +14,11 @@ import { ItemService } from '../../service/item.service';
   styleUrls: ['./category.component.css'],
   providers: [CategoryService]
 })
-export class CategoryComponent implements OnInit, OnDestroy {
+export class CategoryComponent implements OnInit, OnDestroy{
+
+
+
+
   @Output() viewQuick: string ;
   @ViewChild(ProductsListComponent) productListComponent: ProductsListComponent;
   @ViewChild(CategoryHeaderComponent) cateHeader: CategoryHeaderComponent;
@@ -36,30 +40,58 @@ export class CategoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this.route.queryParams.subscribe(params => {
+      this.sub = this.route.queryParams.subscribe(params => {
       console.log(params['page']);
       this.page = +params['page'];
       if (!this.page) {
         this.page = 1;
       }
-
-
-
-      this.sub2 = this.route.params.subscribe(params2 => {
-        this.id = +params2['id'];
-        if (!this.id) {
-          this.id = 0;
-        }
-        this.categoryID = +params['categoryid'];
-        if(!this.categoryID) {
-          this.categoryID = 0;
-        }
-        
-      });
       this.getListProducts(this.id, this.categoryID, this.page);
 
     });
+
+    this.sub2 = this.route.params.subscribe(params2 => {
+      this.id = +params2['id'];
+      if (!this.id) {
+        this.id = 0;
+      }
+      this.categoryID = +params2['categoryid'];
+      alert('category component');
+      alert(this.categoryID)
+      if(!this.categoryID) {
+        this.categoryID = 0;
+      }
+      this.getListProducts(this.id, this.categoryID, this.page);
+      
+    });
   }
+
+
+  // ngOnChanges() {
+  //   this.sub = this.route.queryParams.subscribe(params => {
+  //     console.log(params['page']);
+  //     this.page = +params['page'];
+  //     if (!this.page) {
+  //       this.page = 1;
+  //     }
+
+  //     this.sub2 = this.route.params.subscribe(params2 => {
+  //       this.id = +params2['id'];
+  //       if (!this.id) {
+  //         this.id = 0;
+  //       }
+  //       this.categoryID = +params['categoryid'];
+  //       alert(this.categoryID);
+
+  //       if(!this.categoryID) {
+  //         this.categoryID = 0;
+  //       }
+        
+  //     });
+  //     this.getListProducts(this.id, this.categoryID, this.page);
+
+  //   });
+  // }
   getListProducts (storeId: number, categoryID: number, page: number) {
 
     this.itemService.getItemByStoreIdAndCategory(storeId,  categoryID, page).subscribe(
@@ -77,7 +109,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
         }
       }
     )
-  
 
   }
   ngOnDestroy() {

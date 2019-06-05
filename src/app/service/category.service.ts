@@ -16,4 +16,8 @@ export class CategoryService {
   getDetail(id: number) {
     return this.http.get(environment.hostname + '/category/' + id).map(res => res.json());
   }
+
+  getListCategoryOfSpecifyStore(storeId: number) {
+    return this.http.get(environment.hostname + '/category/'+ storeId).map(res => res.json());
+  }
 }

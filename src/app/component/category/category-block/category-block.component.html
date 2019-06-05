@@ -1,21 +1,12 @@
 <div id="categories_block" class="block sidebar_block_custom">
   <h4 class="title_block">Danh Mục Sản Phẩm <i class="fa fa-plus-circle"></i></h4>
-  <!-- <div class="block_content" style="">
+  <div class="block_content" style="">
     <ul class="list-block list-group list-unstyled listSidebar">
-      <li class="{{category.id === id ? 'active' : ''}}" *ngFor="let category of categories"><a (click)="loadSubCategory(category.id);toggle = !toggle">
-        {{ category.name }}<span class="leo-qty pull-right">{{ category.quantityItems }}</span>
-      </a>
-        <ul *ngIf="toggle" [ngClass]="{'hide':(subCategoryCurrent.length == 0 || subCategoryCurrent[0].parentId != category.id)}" class="list-block list-group list-unstyled listSidebar">
-          <li><a [routerLink]="['/category', category.id]" title="{{ category.name }}">
-            Tất cả {{ category.name }}
-          </a>
-          </li>
-          <li class="{{subCategory.id === id ? 'active' : ''}}" *ngFor="let subCategory of subCategoryCurrent"><a [routerLink]="['/category', subCategory.id]" title="{{ subCategory.name }}">
-            {{ subCategory.name }}
-          </a>
-          </li>
-        </ul>
+      <li class="{{category.id === id ? 'active' : ''}}" *ngFor="let category of categories">
+        <a   [routerLink]="[ '/stores', storeID, 'category', category.id ]" >
+          {{ category.name }}
+        </a>
       </li>
     </ul>
-  </div> -->
+  </div>
 </div>

@@ -195,9 +195,11 @@ export class MainPaymentComponent implements OnInit {
         },
         'transactionId': payment.id,
         'transactionAmount': payment.transactions[0].amount.total,
-        'payerEmail': payment.payer.payer_info.email,
-        'transactionAt': payment.create_time.substring(0, payment.create_time.length - 1)
+        'payEmail': payment.payer.payer_info.email,
+        'transactionTime': payment.create_time.substring(0, payment.create_time.length - 1)
       };
+      console.log("payment payer");
+      console.log(body);
       console.log("orderId" + body.order.id);
       this.cartService.removeCart();
       this.tokenService.postDataWithToken(url, body).subscribe(res => {

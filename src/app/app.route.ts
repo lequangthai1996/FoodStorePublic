@@ -24,11 +24,6 @@ const appRoutes: Routes = [
     {
         path: 'category', children: [
         {
-            path: '', component: CategoryComponent, data: {
-            breadcrumb: 'Tất cả sản phẩm'
-        }
-        },
-        {
             path: ':id', component: CategoryComponent, data: {
             breadcrumb: 'Danh mục sản phẩm'
         }
