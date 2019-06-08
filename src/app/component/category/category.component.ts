@@ -7,6 +7,7 @@ import {ProductsListComponent} from './products-list/products-list.component';
 import {environment} from '../../../environments/environment';
 import {CategoryHeaderComponent} from './category-header/category-header.component';
 import { ItemService } from '../../service/item.service';
+import { TokenService } from '../../service/token.service';
 
 @Component({
   selector: 'app-category',
@@ -14,7 +15,7 @@ import { ItemService } from '../../service/item.service';
   styleUrls: ['./category.component.css'],
   providers: [CategoryService]
 })
-export class CategoryComponent implements OnInit, OnDestroy{
+export class  CategoryComponent implements OnInit, OnDestroy{
 
 
 
@@ -24,6 +25,7 @@ export class CategoryComponent implements OnInit, OnDestroy{
   @ViewChild(CategoryHeaderComponent) cateHeader: CategoryHeaderComponent;
   page: number;
   id: number;
+  supplierID: number;
   categoryID: number;
   private sub: any;
   private sub2: any;
@@ -33,7 +35,8 @@ export class CategoryComponent implements OnInit, OnDestroy{
               private route: ActivatedRoute,
               private router: Router,
               private categoryService: CategoryService,
-              private itemService: ItemService) {
+              private itemService: ItemService,
+              private tokenService: TokenService) {
     this.viewQuick = 'none';
     this.id = 0;
     this.page = 0;
@@ -55,9 +58,8 @@ export class CategoryComponent implements OnInit, OnDestroy{
       if (!this.id) {
         this.id = 0;
       }
+      this.tokenService.setSupplierID(this.id);
       this.categoryID = +params2['categoryid'];
-      alert('category component');
-      alert(this.categoryID)
       if(!this.categoryID) {
         this.categoryID = 0;
       }

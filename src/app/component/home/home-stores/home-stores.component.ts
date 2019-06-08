@@ -34,7 +34,6 @@ export class HomeStoresComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.categoryID = +params['categoryid'];
-      alert("cvdfddfd");
       if(!this.categoryID) {
         this.categoryID = 0;
       }

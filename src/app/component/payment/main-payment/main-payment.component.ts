@@ -65,8 +65,9 @@ export class MainPaymentComponent implements OnInit {
         'promotionId': 1,
         'shipId': 1,
         'orderItems': items,
-        'supplierId': 16
+        'supplierId': this.tokenService.getSupplierID()
       };
+    console.log("gio hang ne: ");
     console.log(data);
       this.orderService.sendOrder(data).subscribe((a: any) => {
         swal('Thông báo', 'Đặt hàng thành công!', 'success');
@@ -181,9 +182,9 @@ export class MainPaymentComponent implements OnInit {
       'promotionId': 1,
       'shipId': 1,
       'orderItems': items,
-      'supplierId': 16
+      'supplierId': this.tokenService.getSupplierID()
     };
-    console.log(data);
+    console.log(JSON.stringify(data));
     this.orderService.sendOrder(data).subscribe((a: any) => {
       console.log("order detail");
       console.log(a);
