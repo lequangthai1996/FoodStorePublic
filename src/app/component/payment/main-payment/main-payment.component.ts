@@ -166,6 +166,7 @@ export class MainPaymentComponent implements OnInit {
     }, '#paypal-button');
   }
   afterPayment(payment) {
+    
     let items;
     items = [];
     this.cartService.carts.forEach(item => {

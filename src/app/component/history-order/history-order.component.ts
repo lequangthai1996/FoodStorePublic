@@ -21,10 +21,16 @@ export class HistoryOrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-     alert("History Order");
-      this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getUserDetail').subscribe(data => {
-          this.listOrders = data.orders;
+      this.sub = this.tokenService.getDataWithToken(environment.hostname + '/order/user').subscribe(result => {
+        if(result['success'] === true) {
+          this.listOrders = result.data;
           this.pagination.init(this.listOrders);
+        } else {
+          alert("Has error");
+        }
+      }, 
+      error => {
+        alert(error);
       });
   }
 

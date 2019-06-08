@@ -16,9 +16,10 @@ export class TokenService {
   public login = new Subject<any>();
   constructor(private http: Http,
               private shareService: ShareService) {
-                    
-    //this.currentUser = null;
-   // this.getInfo();
+    this.headers = new Headers();
+    this.headers.append('Authorization', this.getToken() == null ?null : this.getToken());
+    this.headers.append('Accept', 'application/json');
+    this.headers.append('Content-type', 'application/json');
   }
 
   /** Get information basic of user */
