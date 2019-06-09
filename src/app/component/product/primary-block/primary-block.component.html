@@ -46,17 +46,20 @@
         </div>
         <div class="product-center-column col-xs-12 col-sm-12 col-md-7">
             <h1 itemprop="name">{{item.name}}</h1>
-            <!--<div class="product-description rte" itemprop="description">-->
-               <!--{{item.description}}-->
-            <!--</div>-->
+              <div class="product-description rte" itemprop="description">
+               {{item.description}}
+             </div>
 
 
             <div class="product-extra">
                 <ul class="list-unstyled description no-padding">
                     <li><b>Nhãn hiệu: </b><a href="/vendors?query="></a></li>
                     <li><b>Tình trạng: </b>
-                        <span class="availability">
-                            <span class="available instock">{{item.status}}</span>
+                        <span class="availability" *ngIf="item.quantity > 0">
+                            <span class="available instock">Còn hàng</span>
+                        </span>
+                        <span class="availability" *ngIf="item.quantity <= 0">
+                            <span class="available instock">Hết hàng</span>
                         </span>
                     </li>
                 </ul>
@@ -68,15 +71,7 @@
                 <link itemprop="availability" href="http://schema.org/InStock">
 
                 <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-form">
-                    <div class="product_price_content" *ngIf="item.promotions.length != 0">
-                        <span class="price product-price sale-price">
-                           <span>{{(item.price *(1 - item.promotions[0].percent/100)).toLocaleString('vi')}} ₫</span>
-                         </span>
-                        <span class="old-price product-price">
-                          <span>{{item.price.toLocaleString('vi')}} ₫</span>
-                        </span>
-                    </div>
-                    <div class="product_price_content" *ngIf="item.promotions.length == 0">
+                    <div class="product_price_content">
                           <span class="price product-price sale-price">
                            <span>{{item.price.toLocaleString('vi')}} ₫</span>
                          </span>

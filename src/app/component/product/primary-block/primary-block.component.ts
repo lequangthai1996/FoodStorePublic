@@ -38,14 +38,16 @@ export class PrimaryBlockComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
-            this.itemService.getItemById(this.id).subscribe((data: any) => {
-                this.item = data;
-                this.image = './assets/images/upload/' + this.item.avatar;
+            this.itemService.getItemById(this.id).subscribe((result: any) => {
+                if(result['success']=== true) {
+                this.item = result.data;
+                this.image = this.item.avatar;
                 this.route.data.subscribe((v: any) => {
                   v.breadcrumb = this.item.name;
                   this.titleService.setTitle(this.item.name);
                   this.shareService.updateBreadCrum(v.breadcrumb);
                 });
+              }
             });
         });
     }

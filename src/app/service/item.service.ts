@@ -37,7 +37,7 @@ export class ItemService {
     }
 
     getItemById(id: number) {
-        return this.http.get(environment.hostname + '/item/getItemById/' + id).map(res => res.json());
+        return this.http.get(environment.hostname + '/guess/items/' + id).map(res => res.json());
     }
 
     getItemRelated(id: number) {
