@@ -72,7 +72,7 @@ export class MainPaymentComponent implements OnInit {
       this.orderService.sendOrder(data).subscribe((a: any) => {
         swal('Thông báo', 'Đặt hàng thành công!', 'success');
         this.cartService.removeCart();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/store']);
       }, (err: any) => {
         swal('Thông báo!', 'Đặt hàng thất bại!', 'error');
       });

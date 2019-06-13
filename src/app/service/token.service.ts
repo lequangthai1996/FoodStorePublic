@@ -63,7 +63,17 @@ export class TokenService {
   }
   postDataWithToken(url, data, options?) {
 
-    return this.http.post(url, data, options).map(res => res.json());
+    let headers = new Headers();
+    headers.append('Authorization', this.getToken() == null ?null : this.getToken());
+    headers.append('Accept', 'application/json');
+    headers.append('Content-type', 'application/json');
+    return this.http.post(url, data, { headers: this.headers} ).map(res => res.json());
+  }
+
+  postDataWithTokenFormData(url, data, options?) {
+    let localheaders = new Headers();
+    localheaders.append('Authorization', this.getToken() == null ?null : this.getToken());
+    return this.http.post(url, data, { headers: localheaders} ).map(res => res.json());
   }
   putDataWithToken(url, data) {
     return this.http.put(url, data, {

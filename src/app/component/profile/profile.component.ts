@@ -22,16 +22,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         if (!this.tokenService.isLogged()) {
-            alert('You have to login!');
             this.router.navigate(['login']);
         } else {
-            alert("Profile ");
-            this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getUserDetail').subscribe(data => {
-                this.avatar = data.avatar;
-            });
-            this.userService.avatar.subscribe(data => {
-                this.avatar = data.avatar;
-            });
+            this.sub = this.tokenService.getDataWithToken(environment.hostname + '/user/getDetail').subscribe(result => {
+                if(result['success']=== true) {
+                this.avatar = result.data.avatar;
+                this.userService.avatar.subscribe(avatar2 => {
+                    this.avatar = avatar2;
+                });    
+                } else {
+                    alert(result['message']);
+                }
+            },
+            error => {
+                alert(error);
+            }
+            );
         }
     }
 

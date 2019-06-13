@@ -1,96 +1,85 @@
 <div class="col-md-8 profile-info" *ngIf="user">
     <div class="table">
-        <form ngNoForm [formGroup]="updateForm" (ngSubmit)="update(updateForm.value)" class="form-group">
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="form-group">
             <table class="table-condensed  user-information">
                 <tbody>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-user "></span>
-                            FullName
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="text" placeholder="Full Name..." required=" " formControlName="fullName" name="fullName"
-                               class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-bookmark"></span>
-                            Gender
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <select #gender formControlName="gender" name="gender" class="form-control">
-                            <option [value]="gen" *ngFor=" let gen of genderArr">{{gen}}</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-envelope"></span>
-                            Email
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="text" name="email" placeholder="Email..." formControlName="email" class="form-control"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-calendar "></span>
-                            Birthday
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="date" name="birthday" formControlName="birthday" class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-home"></span>
-                            Address
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="text" name="address" formControlName="address" class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-phone "></span>
-                            Phone Number
-                            <span class="star">(*)</span>
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="text" name="phone" formControlName="phone" class="form-control">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>
-                            <span class="glyphicon glyphicon-phone "></span>
-                            Avatar
-                        </strong>
-                    </td>
-                    <td class="text-primary">
-                        <input type="hidden" name="avatar" formControlName="avatar" [(ngModel)]="avatar" value="{{avatar}}">
-                        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera"
-                               class="form-control">
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-user "></span>
+                                FullName
+                                <span class="star">(*)</span>
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <input type="text" placeholder="Full Name..." formControlName="fullName"
+                                name="fullName" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-bookmark"></span>
+                                Gender
+                                <span class="star">(*)</span>
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <select name="gender" class="form-control" formControlName="gender">
+                                <option [value]="gen" *ngFor=" let gen of genderArr">{{gen}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-envelope"></span>
+                                Email
+                                <span class="star">(*)</span>
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <input type="text" name="email" disabled placeholder="Email..." formControlName="email"
+                                class="form-control" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-home"></span>
+                                Address
+                                <span class="star">(*)</span>
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <input type="text" name="address" formControlName="address" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-phone "></span>
+                                Phone Number
+                                <span class="star">(*)</span>
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <input type="text" name="phone" formControlName="phone" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-phone "></span>
+                                Avatar
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <input type="file" name="avatar" (change)="onFileSelect($event)" accept="image/*;capture=camera"
+                                class="form-control">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="button-form">
@@ -101,11 +90,10 @@
     </div>
 </div>
 <!--<div style="width:100%; min-height: 1000px;">-->
-    <!--<div style="position:absolute;left: 42%; z-index: 40">-->
-        <!--<img width="100px" height="100px" src="./assets/images/banner/load.gif">-->
-    <!--</div>-->
+<!--<div style="position:absolute;left: 42%; z-index: 40">-->
+<!--<img width="100px" height="100px" src="./assets/images/banner/load.gif">-->
+<!--</div>-->
 <!--</div>-->
 <div style="position:absolute;left: 42%; z-index: 40" *ngIf="load">
     <img width="100px" height="100px" src="./assets/images/banner/load.gif">
 </div>
-

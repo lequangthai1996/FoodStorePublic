@@ -30,7 +30,7 @@ import { OnFocusDirective } from './directive/focus-class.directive';
 import { OrderService } from './service/order.service';
 import { PaginationService } from './service/pagination.service';
 import { RangePipe } from './pipe/range.pipe';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 import { ProfileComponent } from './component/profile/profile.component';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 import { FileSelectDirective } from 'ng2-file-upload';
@@ -95,7 +95,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CategoryService,
     StoreService,
     UserService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

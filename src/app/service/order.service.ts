@@ -26,7 +26,7 @@ export class OrderService {
     return this.tokenService.getDataWithToken(`${environment.hostname}/api/orders/${id}`);
   }
   deleteOrder(id) {
-    return this.tokenService.deleteDataWithToken(`${environment.hostname}/api/orders/${id}`);
+    return this.tokenService.deleteDataWithToken(`${environment.hostname}/order/${id}`);
   }
   updateOrder(id, data) {
     return this.tokenService.putDataWithToken(`${environment.hostname}/api/orders/${id}`, data);

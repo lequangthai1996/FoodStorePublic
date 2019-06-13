@@ -28,9 +28,8 @@ export class HistoryOrderDetailComponent implements OnInit {
       }
     });
     this.order = [];
-    this.tokenService.getDataWithToken(environment.hostname + '/orderItem/getItemByOrder/' + this.id).subscribe( data => {
-      console.log(data);
-      this.order = data;
+    this.tokenService.getDataWithToken(environment.hostname + '/order/user/' + this.id).subscribe( result => {
+      this.order = result.data;
     });
     // this.orderService.getItemByOrder(this.id).subscribe(data => {
     //   console.log(data);
@@ -134,7 +133,7 @@ export class HistoryOrderDetailComponent implements OnInit {
             `Xóa đơn hàng thành công.`,
             'success'
         );
-        this.router.navigate(['/account']);
+        this.router.navigate(['/history-orders']);
       }, err => {
         swal(
             `Thông báo!`,
@@ -147,8 +146,8 @@ export class HistoryOrderDetailComponent implements OnInit {
   getTotal() {
     let total: number;
     total = 0;
-    if (this.order.length !== 0) {
-      this.order.forEach(function (item) {
+    if (this.order.orderItems.length !== 0) {
+      this.order.orderItems.forEach(function (item) {
         total += (item.priceOffical * item.quantityCart);
       });
     }

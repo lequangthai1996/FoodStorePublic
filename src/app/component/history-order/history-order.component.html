@@ -22,7 +22,7 @@
               <tbody>
               <tr *ngFor=" let order of  mf.data">
                 <td>{{order.id}}</td>
-                <td>{{order.created_at}}</td>
+                <td>{{order.createdAt}}</td>
                 <td>{{order.status == '0' ? 'Hủy': order.status == '1' ? 'Chờ' : order.status == '2' ? 'Đã xác nhận': 'Đã hoàn thành'}}</td>
                 <td>{{order.address}}</td>
                 <td>{{order.name}}</td>

@@ -43,7 +43,7 @@
                 <!--</div>-->
               <!--</div>-->
             </div>
-            <div  *ngFor="let product of order; let index = index" class="list_product_cart clearfix" data-id="3203311">
+            <div  *ngFor="let product of order.orderItems; let index = index" class="list_product_cart clearfix" data-id="3203311">
               <div class="cpro_item col-xs-12 col-sm-2 col-md-2 cart-img-column">
                 <div class="cpro_item_inner">
                   <a [routerLink]= "['detail',product.id]"
@@ -98,8 +98,6 @@
                 </p>
                 <a class="btn con-ajax-cart btn-inverse" (click)="back()"
                    title="{{ 'continue_order' }}">{{ 'continue_order' }}</a>
-                <input *ngIf="order.status == 1" (click)="updateOrder()" type="submit" name="update" class="btn btn-outline update-cart"
-                       value="Cập nhật đơn hàng">
                 <input *ngIf="order.status == 1" (click)="removeOrder()" type="submit" name="update" class="btn btn-outline update-cart"
                        value="Hủy đơn hàng">
               </div>
